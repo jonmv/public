@@ -19,9 +19,16 @@
     Skibukse
     Treningstights
     Noe til vintersykling?
+    Hodelykt med 1GLumen++
 
 #   Ole Laurits
 ##  Innredning
     Leselampe
+##  Leker
+    Store pluss-plussa
+    Sjørøverkiste
+    Sjørøverskute
+##  Utstyr
+    Ulltøy
 
 #   Lars Christian
