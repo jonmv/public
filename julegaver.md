@@ -16,6 +16,7 @@
 
 #   Kristine 
 ##  Sport
+    Glider (til ski)
     Skibukse
     Treningstights
     Noe til vintersykling?
