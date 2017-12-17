@@ -13,6 +13,7 @@
 ##  Sport
     Balaklava til sykling
     Vintersko (hvis ikke allerede står i skapet nede)
+    Såler til skisko
 
 #   Kristine 
 ##  Sport
