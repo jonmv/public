@@ -8,8 +8,9 @@
     Cognac
 
 #   Jon Marius 
-##  Snekker 
+##  Utstyr 
     Tynne skinnhansker (gode til utearbeid i kaldt vær) 
+    Vater
 ##  Sport
     Balaklava til sykling
     Vintersko (hvis ikke allerede står i skapet nede)
@@ -17,7 +18,7 @@
 
 #   Kristine 
 ##  Sport
-    Glider (til ski)
+    Glider
     Skibukse
     Treningstights
     Noe til vintersykling?
@@ -27,10 +28,11 @@
 ##  Innredning
     Leselampe
 ##  Leker
-    Store pluss-plussa
+    Store "Pluss-Pluss"
     Sjørøverkiste
     Sjørøverskute
 ##  Utstyr
     Ulltøy
 
 #   Lars Christian
+
