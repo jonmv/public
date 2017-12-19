@@ -6,6 +6,7 @@
     Ovn og komfyr?
     Whiskey
     Cognac
+    Tørket, saltet hjortehjerte
 
 #   Jon Marius 
 ##  Utstyr 
