@@ -2,46 +2,46 @@
 
 ##  Frukt og grønt
 
-<input type="checkbox">Banan  
-<input type="checkbox">Eple  
+Banan  
+Eple  
 
 ##  Bakevarer
 
-<input type="checkbox">Brød  
-<input type="checkbox">Polarbrød  
+Brød  
+Polarbrød  
 
 ##  Pålegg
 
-<input type="checkbox">Kaviar  
-<input type="checkbox">Majones  
-<input type="checkbox">Salami  
+Kaviar  
+Majones  
+Salami  
 
 ##  Drikke
 
-<input type="checkbox">Melk  
-<input type="checkbox">Juice  
-<input type="checkbox">Kefir  
+Melk  
+Juice  
+Kefir  
 
 ##  Frokost / niste
 
-<input type="checkbox">Rosiner  
-<input type="checkbox">Yoghurt i pose og beger  
-<input type="checkbox">Havrefras  
-<input type="checkbox">Quaker crusli  
-<input type="checkbox">All bran flakes  
+Rosiner  
+Yoghurt i pose og beger  
+Havrefras  
+Quaker crusli  
+All bran flakes  
 
 ##  Basisvarer
 
-<input type="checkbox">Solsikkeolje, e.l.  
-<input type="checkbox">Soyasaus  
-<input type="checkbox">Balsamico  
+Solsikkeolje, e.l.  
+Soyasaus  
+Balsamico  
 
 ##  Hygiene
 
-<input type="checkbox">Tannbørster til barna  
-<input type="checkbox">Tannkrem til barna  
-<input type="checkbox">Bleier  
+Tannbørster til barna  
+Tannkrem til barna  
+Bleier  
 
 ##  Diverse
 
-<input type="checkbox">Sana-Sol  
+Sana-Sol  
