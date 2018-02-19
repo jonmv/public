@@ -1,3 +1,5 @@
+<html>
+<body>
 #   Kolonial
 
 ##  Frukt og grønt
@@ -45,3 +47,5 @@
 ##  Diverse
 
 <input type="checkbox">Sana-Sol  
+</body>
+</html>
