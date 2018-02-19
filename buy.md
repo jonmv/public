@@ -2,46 +2,46 @@
 
 ##  Frukt og grønt
 
-Banan
-Eple
+Banan  
+Eple  
 
 ##  Bakevarer
 
-Brød
-Polarbrød
+Brød  
+Polarbrød  
 
 ##  Pålegg
 
-Kaviar
-Majones
-Salami
+Kaviar  
+Majones  
+Salami  
 
 ##  Drikke
 
-Melk
-Juice
-Kefir
+Melk  
+Juice  
+Kefir  
 
 ##  Frokost / niste
 
-Rosiner
-Yoghurt i pose og beger
-Havrefras
-Quaker crusli
-All bran flakes
+Rosiner  
+Yoghurt i pose og beger  
+Havrefras  
+Quaker crusli  
+All bran flakes  
 
 ##  Basisvarer
 
-Solsikkeolje, e.l.
-Soyasaus
-Balsamico
+Solsikkeolje, e.l.  
+Soyasaus  
+Balsamico  
 
 ##  Hygiene
 
-Tannbørster til barna
-Tannkrem til barna
-Bleier
+Tannbørster til barna  
+Tannkrem til barna  
+Bleier  
 
 ##  Diverse
 
-Sana-Sol
+Sana-Sol  
