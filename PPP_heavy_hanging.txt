@@ -1,0 +1,1124 @@
+Sampling process 15841 for 3 seconds with 1 millisecond of run time between samples
+Sampling completed, processing symbols...
+Analysis of sampling PhoenixPoint (pid 15841) every 1 millisecond
+Process:         PhoenixPoint [15841]
+Path:            /private/var/folders/qk/4jb_9w596ll25ykrw96sscpm0000gp/T/AppTranslocation/6B091A5F-283A-42ED-80E4-A493C6CB5C53/d/PhoenixPoint.app/Contents/MacOS/PhoenixPoint
+Load Address:    0x100000000
+Identifier:      com.Company.ProductName
+Version:         1.0 (0)
+Code Type:       X86-64
+Parent Process:  ??? [1]
+
+Date/Time:       2018-05-15 22:57:08.473 +0200
+Launch Time:     2018-05-15 20:46:57.733 +0200
+OS Version:      Mac OS X 10.13.4 (17E202)
+Report Version:  7
+Analysis Tool:   /usr/bin/sample
+
+Physical footprint:         1.6G
+Physical footprint (peak):  1.6G
+----
+
+Call graph:
+    519 Thread_4056318   DispatchQueue_1: com.apple.main-thread  (serial)
+    + 519 start  (in libdyld.dylib) + 1  [0x7fff66f2d015]
+    +   519 PlayerMain(int, char const**)  (in PhoenixPoint) + 954  [0x100458d1a]
+    +     519 NSApplicationMain  (in AppKit) + 804  [0x7fff3c176a72]
+    +       519 -[NSApplication run]  (in AppKit) + 764  [0x7fff3c1a7885]
+    +         519 -[NSApplication(NSEvent) _nextEventMatchingEventMask:untilDate:inMode:dequeue:]  (in AppKit) + 3044  [0x7fff3c948e34]
+    +           519 _DPSNextEvent  (in AppKit) + 2085  [0x7fff3c1b2a73]
+    +             519 _BlockUntilNextEventMatchingListInModeWithFilter  (in HIToolbox) + 64  [0x7fff3deff884]
+    +               519 ReceiveNextEventCommon  (in HIToolbox) + 613  [0x7fff3deffb06]
+    +                 519 RunCurrentEventLoopInMode  (in HIToolbox) + 286  [0x7fff3deffd96]
+    +                   519 CFRunLoopRunSpecific  (in CoreFoundation) + 483  [0x7fff3ec171a3]
+    +                     519 __CFRunLoopRun  (in CoreFoundation) + 2427  [0x7fff3ec17dab]
+    +                       519 __CFRunLoopDoTimers  (in CoreFoundation) + 346  [0x7fff3ec207da]
+    +                         519 __CFRunLoopDoTimer  (in CoreFoundation) + 1095  [0x7fff3ec20cd7]
+    +                           519 __CFRUNLOOP_IS_CALLING_OUT_TO_A_TIMER_CALLBACK_FUNCTION__  (in CoreFoundation) + 20  [0x7fff3ec21064]
+    +                             519 __NSFireTimer  (in Foundation) + 83  [0x7fff40d7e739]
+    +                               519 -[PlayerAppDelegate UpdatePlayer]  (in PhoenixPoint) + 436  [0x1004590d4]
+    +                                 519 PlayerLoop()  (in PhoenixPoint) + 1432  [0x1007b8ca8]
+    +                                   507 PlayerRender(bool)  (in PhoenixPoint) + 200  [0x1007b7198]
+    +                                   ! 507 GfxDeviceClient::BeginFrame()  (in PhoenixPoint) + 97  [0x100f7b461]
+    +                                   !   507 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +                                   !     507 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                                   !       507 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    +                                   12 PlayerRender(bool)  (in PhoenixPoint) + 295  [0x1007b71f7]
+    +                                     12 RenderManager::RenderCameras(int, void (*)())  (in PhoenixPoint) + 623  [0x1005a886f]
+    +                                       12 Camera::Render(CullResults&, ShaderPassContext&, Camera::RenderFlag, void (*)())  (in PhoenixPoint) + 111  [0x10054ea4f]
+    +                                         9 Camera::CustomRender(CullResults&, ShaderPassContext&, CameraRenderingParams const*, Camera::RenderFlag, Camera::PerformRenderFunction*, void (*)())  (in PhoenixPoint) + 1260  [0x10054d6ec]
+    +                                         : 9 Camera::DoRender(CullResults&, SharedRendererScene const&, Camera::RenderFlag, Camera::PerformRenderFunction*)  (in PhoenixPoint) + 317  [0x10054bcfd]
+    +                                         :   9 DoRenderLoop(RenderLoop&, RenderingPath, CullResults&, ShadowMapCache&, bool)  (in PhoenixPoint) + 1743  [0x1005f5ebf]
+    +                                         :     3 DoDeferredRenderLoop(RenderLoopContext const&, dynamic_array<RenderObjectData, 8ul>&, dynamic_array<RenderObjectData, 8ul>&, CullResults const&, RenderTexture*&, RenderTexture*&, bool*)  (in PhoenixPoint) + 3471  [0x1005dcecf]
+    +                                         :     | 3 DeferredRenderLoop::RenderGBuffer(RenderTexture*, RenderTexture**, bool, JobFence, DeferredRenderLoopScratch const*, int&, ObjectHandle<RenderSurface_Tag, RenderSurfaceBase*>)  (in PhoenixPoint) + 2928  [0x1005db340]
+    +                                         :     |   3 GfxDevice::ExecuteAsync(int, void (*)(GfxDeviceAsyncCommand::ArgScratch*, GfxDeviceAsyncCommand::Arg const*), GfxDeviceAsyncCommand::ArgScratch**, GfxDeviceAsyncCommand::Arg const*, JobFence const&)  (in PhoenixPoint) + 65  [0x100906ef1]
+    +                                         :     |     2 DeferredRenderLoopJob(GfxDeviceAsyncCommand::ArgScratch*, GfxDeviceAsyncCommand::Arg const*)  (in PhoenixPoint) + 900,1774  [0x1005db764,0x1005dbace]
+    +                                         :     |     1 DeferredRenderLoopJob(GfxDeviceAsyncCommand::ArgScratch*, GfxDeviceAsyncCommand::Arg const*)  (in PhoenixPoint) + 2354  [0x1005dbd12]
+    +                                         :     |       1 DrawUtil::DrawMeshRawFromNodeQueue(RenderNodeQueue const&, unsigned int, ShaderChannelMask, int)  (in PhoenixPoint) + 118  [0x1006557a6]
+    +                                         :     |         1 MeshRenderingData::ExtractMeshBuffersAndDrawRange(ShaderChannelMask, int, MeshBuffers&, DrawBuffersRange&, bool) const  (in PhoenixPoint) + 140  [0x1007001fc]
+    +                                         :     3 DoDeferredRenderLoop(RenderLoopContext const&, dynamic_array<RenderObjectData, 8ul>&, dynamic_array<RenderObjectData, 8ul>&, CullResults const&, RenderTexture*&, RenderTexture*&, bool*)  (in PhoenixPoint) + 4747  [0x1005dd3cb]
+    +                                         :     | 2 DeferredRenderLoop::RenderLighting(ActiveLightingContext&, RenderTexture*, TextureID, RenderTexture**, int, Vector4f const&, LightingLayers const&, MinMaxAABB&, bool, ObjectHandle<RenderSurface_Tag, RenderSurfaceBase*>)  (in PhoenixPoint) + 638  [0x1005d8c6e]
+    +                                         :     | + 2 RenderLightDeferred(RenderLoopContext const&, LightingContext const&, QualitySettings::ShadowQuality, ShadowProjection, RenderTexture*, RenderTexture*, int, int, DeviceStencilState const*, DeviceMVPMatricesState const&, Vector4f const&, LightingLayers const&, bool, ShaderPassContext&, ObjectHandle<RenderSurface_Tag, RenderSurfaceBase*>)  (in PhoenixPoint) + 3275  [0x1005d9c2b]
+    +                                         :     | +   1 RenderShadowMaps(ShadowMapJobHeader const*, ShaderPassContext&, RenderTexture::SetActiveFlags)  (in PhoenixPoint) + 3262  [0x1005bf5ae]
+    +                                         :     | +   ! 1 GfxDevice::ExecuteAsync(int, void (*)(GfxDeviceAsyncCommand::ArgScratch*, GfxDeviceAsyncCommand::Arg const*), GfxDeviceAsyncCommand::ArgScratch**, GfxDeviceAsyncCommand::Arg const*, JobFence const&)  (in PhoenixPoint) + 65  [0x100906ef1]
+    +                                         :     | +   !   1 ShadowMapJob(GfxDeviceAsyncCommand::ArgScratch*, GfxDeviceAsyncCommand::Arg const*)  (in PhoenixPoint) + 997  [0x1005c06e5]
+    +                                         :     | +   !     1 RenderCasters(int, Vector3f const&, Vector3f const&, ShadowJobData const&, ShaderPassContext&, std::vector<ShadowCasterData, stl_allocator<ShadowCasterData, (MemLabelIdentifier)2, 16> > const&, std::vector<ShadowCasterPartData, stl_allocator<ShadowCasterPartData, (MemLabelIdentifier)2, 16> > const&, RenderNodeQueue const&, bool, unsigned int const*)  (in PhoenixPoint) + 2178  [0x1005c1962]
+    +                                         :     | +   !       1 BatchRenderer::ApplyShaderPass(ShaderPassContext&, SharedMaterialData const*, Shader*, ShaderLab::Pass*, int, BatchingFlags, bool, ShaderLab::GrabPasses const*, DeviceRenderStateBlock const*)  (in PhoenixPoint) + 269  [0x1005d695d]
+    +                                         :     | +   !         1 ApplyMaterialPassAndKeywordsWithCache(SharedMaterialData const&, ShaderPassContext&, Shader*, ShaderLab::Pass*, int, bool, ShaderLab::GrabPasses const*, ShaderLab::SubPrograms*, DeviceRenderStateBlock const*)  (in PhoenixPoint) + 136  [0x10081f208]
+    +                                         :     | +   !           1 ApplyMaterialPassWithCache(SharedMaterialData const&, ShaderPassContext&, Shader*, ShaderLab::Pass*, int, bool, ShaderLab::GrabPasses const*, ShaderLab::SubPrograms*, DeviceRenderStateBlock const*)  (in PhoenixPoint) + 169  [0x100819339]
+    +                                         :     | +   !             1 ThreadedDisplayList::Call(ShaderPropertySheet const&)  (in PhoenixPoint) + 257  [0x100f8fdd1]
+    +                                         :     | +   !               1 ThreadedDisplayList::PatchableData::WriteParameters(ThreadedStreamBuffer&, ShaderPropertySheet const&)  (in PhoenixPoint) + 330  [0x100f9000a]
+    +                                         :     | +   1 RenderShadowMaps(ShadowMapJobHeader const*, ShaderPassContext&, RenderTexture::SetActiveFlags)  (in PhoenixPoint) + 6237  [0x1005c014d]
+    +                                         :     | +     1 GfxDevice::ExecuteAsync(int, void (*)(GfxDeviceAsyncCommand::ArgScratch*, GfxDeviceAsyncCommand::Arg const*), GfxDeviceAsyncCommand::ArgScratch**, GfxDeviceAsyncCommand::Arg const*, JobFence const&)  (in PhoenixPoint) + 65  [0x100906ef1]
+    +                                         :     | +       1 ShadowMapJob(GfxDeviceAsyncCommand::ArgScratch*, GfxDeviceAsyncCommand::Arg const*)  (in PhoenixPoint) + 744  [0x1005c05e8]
+    +                                         :     | +         1 RenderCasters(int, Vector3f const&, Vector3f const&, ShadowJobData const&, ShaderPassContext&, std::vector<ShadowCasterData, stl_allocator<ShadowCasterData, (MemLabelIdentifier)2, 16> > const&, std::vector<ShadowCasterPartData, stl_allocator<ShadowCasterPartData, (MemLabelIdentifier)2, 16> > const&, RenderNodeQueue const&, bool, unsigned int const*)  (in PhoenixPoint) + 2247  [0x1005c19a7]
+    +                                         :     | +           1 BatchRenderer::Add(BatchInstanceData const&)  (in PhoenixPoint) + 236  [0x1005d6bac]
+    +                                         :     | +             1 BatchRenderer::RenderBatch(BatchInstanceData const*, unsigned long, ShaderChannelMask)  (in PhoenixPoint) + 188  [0x1005d6f5c]
+    +                                         :     | +               1 RenderMultipleMeshes(RenderNodeQueue const&, RenderMultipleData const&, ShaderChannelMask)  (in PhoenixPoint) + 2474  [0x1008fd7da]
+    +                                         :     | 1 DeferredRenderLoop::RenderLighting(ActiveLightingContext&, RenderTexture*, TextureID, RenderTexture**, int, Vector4f const&, LightingLayers const&, MinMaxAABB&, bool, ObjectHandle<RenderSurface_Tag, RenderSurfaceBase*>)  (in PhoenixPoint) + 785  [0x1005d8d01]
+    +                                         :     |   1 RenderLightDeferred(RenderLoopContext const&, LightingContext const&, QualitySettings::ShadowQuality, ShadowProjection, RenderTexture*, RenderTexture*, int, int, DeviceStencilState const*, DeviceMVPMatricesState const&, Vector4f const&, LightingLayers const&, bool, ShaderPassContext&, ObjectHandle<RenderSurface_Tag, RenderSurfaceBase*>)  (in PhoenixPoint) + 3275  [0x1005d9c2b]
+    +                                         :     |     1 RenderShadowMaps(ShadowMapJobHeader const*, ShaderPassContext&, RenderTexture::SetActiveFlags)  (in PhoenixPoint) + 5120  [0x1005bfcf0]
+    +                                         :     |       1 GfxDevice::ExecuteAsync(int, void (*)(GfxDeviceAsyncCommand::ArgScratch*, GfxDeviceAsyncCommand::Arg const*), GfxDeviceAsyncCommand::ArgScratch**, GfxDeviceAsyncCommand::Arg const*, JobFence const&)  (in PhoenixPoint) + 65  [0x100906ef1]
+    +                                         :     |         1 ShadowMapJob(GfxDeviceAsyncCommand::ArgScratch*, GfxDeviceAsyncCommand::Arg const*)  (in PhoenixPoint) + 744  [0x1005c05e8]
+    +                                         :     |           1 RenderCasters(int, Vector3f const&, Vector3f const&, ShadowJobData const&, ShaderPassContext&, std::vector<ShadowCasterData, stl_allocator<ShadowCasterData, (MemLabelIdentifier)2, 16> > const&, std::vector<ShadowCasterPartData, stl_allocator<ShadowCasterPartData, (MemLabelIdentifier)2, 16> > const&, RenderNodeQueue const&, bool, unsigned int const*)  (in PhoenixPoint) + 2247  [0x1005c19a7]
+    +                                         :     |             1 BatchRenderer::Add(BatchInstanceData const&)  (in PhoenixPoint) + 236  [0x1005d6bac]
+    +                                         :     |               1 BatchRenderer::RenderBatch(BatchInstanceData const*, unsigned long, ShaderChannelMask)  (in PhoenixPoint) + 188  [0x1005d6f5c]
+    +                                         :     |                 1 RenderMultipleMeshes(RenderNodeQueue const&, RenderMultipleData const&, ShaderChannelMask)  (in PhoenixPoint) + 2346  [0x1008fd75a]
+    +                                         :     2 DoDeferredRenderLoop(RenderLoopContext const&, dynamic_array<RenderObjectData, 8ul>&, dynamic_array<RenderObjectData, 8ul>&, CullResults const&, RenderTexture*&, RenderTexture*&, bool*)  (in PhoenixPoint) + 3768  [0x1005dcff8]
+    +                                         :     | 1 SetupActiveLightsContext(ActiveLightingContext&, ActiveLights const&, CullResults const&, ShadowMapCache*, MinMaxAABB const&)  (in PhoenixPoint) + 309  [0x1005de2b5]
+    +                                         :     | + 1 PrepareShadowMaps(CullResults const&, ActiveLight const&, MinMaxAABB const&)  (in PhoenixPoint) + 387  [0x1005bb1c3]
+    +                                         :     | +   1 SendCullingCallbacks(CullingOutput const&, ShadowCullData const&, SharedLightData const&)  (in PhoenixPoint) + 1368  [0x1005bad08]
+    +                                         :     | +     1 GetScriptableCullingParameters(Camera&, bool, ScriptableCullingParameters&)  (in PhoenixPoint) + 3109  [0x10072ebd5]
+    +                                         :     | +       1 QualitySettings::GetShadowDistanceForRendering()  (in PhoenixPoint) + 18  [0x100687432]
+    +                                         :     | 1 SetupActiveLightsContext(ActiveLightingContext&, ActiveLights const&, CullResults const&, ShadowMapCache*, MinMaxAABB const&)  (in PhoenixPoint) + 445  [0x1005de33d]
+    +                                         :     |   1 PrepareShadowMaps(CullResults const&, ActiveLight const&, MinMaxAABB const&)  (in PhoenixPoint) + 2243  [0x1005bb903]
+    +                                         :     |     1 BeginRenderQueueExtraction(RenderNodeQueue&, RendererCullData const*, CullingOutput const&, LODDataArray const*, ExtractionFlags, JobBatchDispatcher*)  (in PhoenixPoint) + 613  [0x1005a9e05]
+    +                                         :     |       1 ScheduleJobForEachInternal(JobFence&, void (*)(void*, unsigned int), void*, int, void (*)(void*), JobPriority)  (in PhoenixPoint) + 152  [0x10077b3b8]
+    +                                         :     |         1 JobQueue::ScheduleGroup(JobGroup*, JobQueue::JobQueuePriority)  (in PhoenixPoint) + 392  [0x10077d258]
+    +                                         :     |           1 _dispatch_semaphore_signal_slow  (in libdispatch.dylib) + 39  [0x7fff66efba0f]
+    +                                         :     |             1 _dispatch_sema4_signal  (in libdispatch.dylib) + 21  [0x7fff66f03866]
+    +                                         :     |               1 semaphore_signal_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074222]
+    +                                         :     1 DoDeferredRenderLoop(RenderLoopContext const&, dynamic_array<RenderObjectData, 8ul>&, dynamic_array<RenderObjectData, 8ul>&, CullResults const&, RenderTexture*&, RenderTexture*&, bool*)  (in PhoenixPoint) + 4625  [0x1005dd351]
+    +                                         :       1 DeferredRenderLoop::RenderReflections(RenderTexture*, RenderTexture**)  (in PhoenixPoint) + 518  [0x1005d74f6]
+    +                                         :         1 RenderEventsContext::ExecuteCommandBuffers(int, unsigned int, ShaderPassContext&, RenderNodeQueue&, profiling::Marker*, int) const  (in PhoenixPoint) + 103  [0x1006cd4b7]
+    +                                         :           1 RenderingCommandBuffer::ExecuteCommandBuffer(ShaderPassContext&, RenderNodeQueue&, unsigned int, dynamic_array<std::pair<ShaderLab::FastPropertyName, RenderTexture*>, 8ul>*, ComputeQueueType, RenderTexture*)  (in PhoenixPoint) + 2419  [0x1006c8503]
+    +                                         :             1 SkinnedMeshRenderer::AddAsRenderNode(RenderNodeQueue&, DeprecatedSourceData const&)  (in PhoenixPoint) + 272  [0x10070dd70]
+    +                                         :               1 MeshRenderingData::Init(Mesh*, Mesh*, int, GfxBuffer*, GfxBuffer*)  (in PhoenixPoint) + 52  [0x1006ffdb4]
+    +                                         :                 1 Mesh::AcquireSharedMeshRenderingData()  (in PhoenixPoint) + 12  [0x1006e557c]
+    +                                         2 Camera::CustomRender(CullResults&, ShaderPassContext&, CameraRenderingParams const*, Camera::RenderFlag, Camera::PerformRenderFunction*, void (*)())  (in PhoenixPoint) + 1122  [0x10054d662]
+    +                                         : 1 CullResults::GetOrCreateSharedRendererScene()  (in PhoenixPoint) + 604  [0x100562c1c]
+    +                                         : | 1 EndRenderQueueExtraction(RenderNodeQueuePrepareContext*)  (in PhoenixPoint) + 78  [0x1005aa37e]
+    +                                         : |   1 CompleteFenceInternal(JobFence&)  (in PhoenixPoint) + 28  [0x10077affc]
+    +                                         : |     1 JobQueue::WaitForJobGroup(JobGroupID)  (in PhoenixPoint) + 288  [0x10077d680]
+    +                                         : |       1 JobQueue::Exec(JobInfo*, long long, int)  (in PhoenixPoint) + 122  [0x10077c55a]
+    +                                         : |         1 CullLocalShadowCastersJob(LocalShadowCullingJobData*, unsigned int)  (in PhoenixPoint) + 175  [0x1005b5e2f]
+    +                                         : |           1 CullShadowCastersWithoutUmbra(IndexList&, CullingParameters const&, AABB const*, unsigned long, unsigned long)  (in PhoenixPoint) + 170  [0x1005cd7ca]
+    +                                         : |             1 IntersectAABBPlaneBoundsOptimized(AABB const&, float vector[4] const*, int)  (in PhoenixPoint) + 25  [0x100621509]
+    +                                         : 1 CullResults::GetOrCreateSharedRendererScene()  (in PhoenixPoint) + 682  [0x100562c6a]
+    +                                         :   1 ScheduleJobForEachInternal(JobFence&, void (*)(void*, unsigned int), void*, int, void (*)(void*), JobPriority)  (in PhoenixPoint) + 152  [0x10077b3b8]
+    +                                         :     1 JobQueue::ScheduleGroup(JobGroup*, JobQueue::JobQueuePriority)  (in PhoenixPoint) + 392  [0x10077d258]
+    +                                         :       1 _dispatch_semaphore_signal_slow  (in libdispatch.dylib) + 39  [0x7fff66efba0f]
+    +                                         :         1 _dispatch_sema4_signal  (in libdispatch.dylib) + 21  [0x7fff66f03866]
+    +                                         :           1 semaphore_signal_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074222]
+    +                                         1 Camera::CustomRender(CullResults&, ShaderPassContext&, CameraRenderingParams const*, Camera::RenderFlag, Camera::PerformRenderFunction*, void (*)())  (in PhoenixPoint) + 723  [0x10054d4d3]
+    +                                           1 ScriptingInvocation::Invoke(ScriptingExceptionPtr*, bool)  (in PhoenixPoint) + 64  [0x100960d60]
+    +                                             1 mono_runtime_invoke  (in libmonobdwgc-2.0.dylib) + 31  [0x10aa0789b]
+    +                                               1 do_runtime_invoke  (in libmonobdwgc-2.0.dylib) + 88  [0x10aa07945]
+    +                                                 1 mono_jit_runtime_invoke  (in libmonobdwgc-2.0.dylib) + 2458  [0x10a844a78]
+    +                                                   1 ???  (in <unknown binary>)  [0x1dbc442f7]
+    +                                                     1 ???  (in <unknown binary>)  [0x1dbc5102d]
+    +                                                       1 ???  (in <unknown binary>)  [0x28cad8e01]
+    +                                                         1 RenderingCommandBuffer::AddDrawRenderer(Renderer*, Material*, int, int)  (in PhoenixPoint) + 45  [0x1006c369d]
+    +                                                           1 RenderingCommandBuffer::PPtrResolver<Material>::Put(Material*)  (in PhoenixPoint) + 36  [0x1006c3774]
+    519 Thread_4057892: Finalizer
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 GC_start_routine  (in libmonobdwgc-2.0.dylib) + 28  [0x10aa5ea5d]
+    +         519 GC_inner_start_routine  (in libmonobdwgc-2.0.dylib) + 90  [0x10aa5eac5]
+    +           519 inner_start_thread  (in libmonobdwgc-2.0.dylib) + 128  [0x10aa3be4a]
+    +             519 start_wrapper  (in libmonobdwgc-2.0.dylib) + 337  [0x10a9d7dd8]
+    +               519 finalizer_thread  (in libmonobdwgc-2.0.dylib) + 201  [0x10aa010cb]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4057893: BatchDeleteObjects
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 BatchDeleteStep2Threaded(void*)  (in PhoenixPoint) + 101  [0x100797db5]
+    +           519 ThreadedStreamBuffer::HandleOutOfBufferToReadFrom(unsigned int&, unsigned int&)  (in PhoenixPoint) + 361  [0x10085cfe9]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4057894: AsyncReadManager
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 AsyncReadManagerThreaded::StaticThreadEntry(void*)  (in PhoenixPoint) + 9  [0x1006106c9]
+    +           519 AsyncReadManagerThreaded::ThreadEntry()  (in PhoenixPoint) + 169  [0x100610e69]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4057895: OSX HID Input
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 HIDDeviceThreadOSX(void*)  (in PhoenixPoint) + 63  [0x10044abdf]
+    +           519 CFRunLoopRun  (in CoreFoundation) + 99  [0x7fff3ec55c33]
+    +             519 CFRunLoopRunSpecific  (in CoreFoundation) + 483  [0x7fff3ec171a3]
+    +               519 __CFRunLoopRun  (in CoreFoundation) + 1783  [0x7fff3ec17b27]
+    +                 519 __CFRunLoopServiceMachPort  (in CoreFoundation) + 341  [0x7fff3ec187d5]
+    +                   519 mach_msg  (in libsystem_kernel.dylib) + 60  [0x7fff67073724]
+    +                     519 mach_msg_trap  (in libsystem_kernel.dylib) + 10  [0x7fff6707420a]
+    519 Thread_4057938: com.apple.NSEventThread
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 _NSEventThread  (in AppKit) + 184  [0x7fff3c2effc4]
+    +         519 CFRunLoopRunSpecific  (in CoreFoundation) + 483  [0x7fff3ec171a3]
+    +           518 __CFRunLoopRun  (in CoreFoundation) + 1783  [0x7fff3ec17b27]
+    +           ! 518 __CFRunLoopServiceMachPort  (in CoreFoundation) + 341  [0x7fff3ec187d5]
+    +           !   518 mach_msg  (in libsystem_kernel.dylib) + 60  [0x7fff67073724]
+    +           !     518 mach_msg_trap  (in libsystem_kernel.dylib) + 10  [0x7fff6707420a]
+    +           1 __CFRunLoopRun  (in CoreFoundation) + 2848  [0x7fff3ec17f50]
+    +             1 __CFRunLoopDoSource1  (in CoreFoundation) + 533  [0x7fff3ec20395]
+    +               1 __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE1_PERFORM_FUNCTION__  (in CoreFoundation) + 41  [0x7fff3ec20449]
+    +                 1 __CFMachPortPerform  (in CoreFoundation) + 310  [0x7fff3ec20596]
+    +                   1 MessageHandler(__CFMachPort*, void*, long, void*)  (in HIToolbox) + 51  [0x7fff3df09970]
+    +                     1 PullEventsFromWindowServerOnConnection(unsigned int, unsigned char, __CFMachPortBoost*)  (in HIToolbox) + 45  [0x7fff3df099cf]
+    +                       1 SLEventCreateNextEvent  (in SkyLight) + 44  [0x7fff60e80d68]
+    +                         1 SLSGetNextEventRecordInternal  (in SkyLight) + 81  [0x7fff60e08371]
+    +                           1 CGSSnarfAndDispatchDatagrams  (in SkyLight) + 168  [0x7fff60d76429]
+    +                             1 mach_msg  (in libsystem_kernel.dylib) + 60  [0x7fff67073724]
+    +                               1 mach_msg_trap  (in libsystem_kernel.dylib) + 10  [0x7fff6707420a]
+    519 Thread_4059052
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 ???  (in GeForceMTLDriver)  load address 0x7fff3a3d8000 + 0x160cc2  [0x7fff3a538cc2]
+    +         519 _pthread_cond_wait  (in libsystem_pthread.dylib) + 732  [0x7fff67246589]
+    +           519 __psynch_cvwait  (in libsystem_kernel.dylib) + 10  [0x7fff6707da1e]
+    519 Thread_4059053: UnityGfxDeviceWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 GfxDeviceWorker::RunGfxDeviceWorker(void*)  (in PhoenixPoint) + 89  [0x100f84229]
+    +           519 GfxDeviceWorker::RunExt(ThreadedStreamBuffer&)  (in PhoenixPoint) + 80  [0x100f8f590]
+    +             519 GfxDeviceWorkerAutoreleasePoolProxy  (in PhoenixPoint) + 60  [0x1004b201c]
+    +               506 GfxDeviceWorker::RunCommand(ThreadedStreamBuffer&)  (in PhoenixPoint) + 28004  [0x100f8b034]
+    +               ! 506 BufferMetal::SetData(void const*, unsigned long, unsigned long, GfxDeviceMetal&)  (in PhoenixPoint) + 52  [0x1004b0934]
+    +               !   481 BufferMetal::Sync(id<MTLCommandBuffer>, GfxDeviceMetal&)  (in PhoenixPoint) + 320  [0x1004b3da0]
+    +               !   : 481 MetalContext::CommitCommandBuffer(MetalContext::CommandBufferCommitType)  (in PhoenixPoint) + 133  [0x1004b6a55]
+    +               !   :   481 ???  (in GeForceMTLDriver)  load address 0x7fff3a3d8000 + 0xc673a  [0x7fff3a49e73a]
+    +               !   :     481 -[_MTLCommandBuffer waitUntilCompleted]  (in Metal) + 67  [0x7fff433800fd]
+    +               !   :       481 _pthread_cond_wait  (in libsystem_pthread.dylib) + 732  [0x7fff67246589]
+    +               !   :         481 __psynch_cvwait  (in libsystem_kernel.dylib) + 10  [0x7fff6707da1e]
+    +               !   25 BufferMetal::Sync(id<MTLCommandBuffer>, GfxDeviceMetal&)  (in PhoenixPoint) + 328  [0x1004b3da8]
+    +               !     25 MetalContext::PrepareCommandBufferIfNeeded()  (in PhoenixPoint) + 357  [0x1004b6975]
+    +               !       25 ???  (in GeForceMTLDriver)  load address 0x7fff3a3d8000 + 0xc6cc5  [0x7fff3a49ecc5]
+    +               !         25 ???  (in GeForceMTLDriver)  load address 0x7fff3a3d8000 + 0xc427b  [0x7fff3a49c27b]
+    +               !           25 ???  (in GeForceMTLDriver)  load address 0x7fff3a3d8000 + 0x16aab6  [0x7fff3a542ab6]
+    +               !             25 MTLIOAccelCommandBufferStorageAllocResourceAtIndex  (in Metal) + 176  [0x7fff4337c4b2]
+    +               !               25 MTLIOAccelResourcePoolCreatePooledResource  (in Metal) + 37  [0x7fff43345746]
+    +               !                 25 _os_unfair_lock_lock_slow  (in libsystem_platform.dylib) + 140  [0x7fff6723e6ba]
+    +               !                   25 __ulock_wait  (in libsystem_kernel.dylib) + 10  [0x7fff6707e162]
+    +               12 GfxDeviceWorker::RunCommand(ThreadedStreamBuffer&)  (in PhoenixPoint) + 7963  [0x100f861eb]
+    +               ! 12 GeometryJobTasks::ScheduleGeometryJobs(GfxDevice&, void (*)(GeometryJobData*), GeometryJobInstruction const*, unsigned int, bool)  (in PhoenixPoint) + 364  [0x10090133c]
+    +               !   12 BufferMetal::BeginWrite(unsigned long, unsigned long)  (in PhoenixPoint) + 161  [0x1004aef11]
+    +               !     12 _platform_memmove$VARIANT$Haswell  (in libsystem_platform.dylib) + 41  [0x7fff6723ef49]
+    +               1 GfxDeviceWorker::RunCommand(ThreadedStreamBuffer&)  (in PhoenixPoint) + 5686  [0x100f85906]
+    +                 1 GfxDeviceMetal::SetShadersThreadable(GpuProgram**, GpuProgramParameters const**, unsigned char const* const*)  (in PhoenixPoint) + 41  [0x1004ae759]
+    +                   1 metal::PrepareRenderTargetIfNeeded(GfxDeviceMetal&)  (in PhoenixPoint) + 45  [0x1004a6c2d]
+    +                     1 SetupMetalFBO(GfxDeviceMetal&, GfxClearFlags, ColorRGBAf const&, float, unsigned int)  (in PhoenixPoint) + 2633  [0x1004a6909]
+    +                       1 GfxDeviceMetal::ReapplyTextures()  (in PhoenixPoint) + 23  [0x1004adc57]
+    +                         1 TexturesMetal::ReapplyTextures(id<MTLRenderCommandEncoder>)  (in PhoenixPoint) + 419  [0x1004be323]
+    +                           1 objc_release  (in libobjc.A.dylib) + 82  [0x7fff663081b2]
+    519 Thread_4059054: Worker Thread
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           516 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +           ! 516 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +           !   516 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +           !     516 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    +           3 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 126  [0x10077cc4e]
+    +             3 JobQueue::Exec(JobInfo*, long long, int)  (in PhoenixPoint) + 122  [0x10077c55a]
+    +               2 ExecuteRenderQueueJob(RenderNodeQueuePrepareContext*, unsigned int)  (in PhoenixPoint) + 576  [0x1005aa060]
+    +               : 1 void ParticleSystemRenderer::PrepareRenderNodes<true>(RenderNodeQueuePrepareThreadContext&)  (in PhoenixPoint) + 130  [0x1003175d2]
+    +               : 1 void PrepareMeshRenderNodes<true>(RenderNodeQueuePrepareThreadContext&)  (in PhoenixPoint) + 415  [0x1006ff15f]
+    +               :   1 bool BaseRenderer::FlattenSharedMaterialData<true>(BaseRenderer&, PerThreadPageAllocator&, RenderNode&)  (in PhoenixPoint) + 184  [0x10055c9d8]
+    +               :     1 Material* PPtrToObjectDontLoadNoThreadCheck<Material>(PPtr<Material>)  (in PhoenixPoint) + 203  [0x10055cbab]
+    +               1 CullAllPerObjectLightsJob(CullAllPerObjectLightsJobData*, unsigned int)  (in PhoenixPoint) + 2000  [0x1005cf6c0]
+    519 Thread_4059055: Worker Thread
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           516 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +           ! 516 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +           !   516 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +           !     516 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    +           2 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 126  [0x10077cc4e]
+    +           ! 2 JobQueue::Exec(JobInfo*, long long, int)  (in PhoenixPoint) + 122  [0x10077c55a]
+    +           !   1 CullAllPerObjectLightsJob(CullAllPerObjectLightsJobData*, unsigned int)  (in PhoenixPoint) + 2031  [0x1005cf6df]
+    +           !   : 1 IntersectAABBSphere(AABB const&, Sphere const&)  (in PhoenixPoint) + 23  [0x10061ff87]
+    +           !   :   1 CalculateSqrDistance(Vector3f const&, AABB const&)  (in PhoenixPoint) + 73  [0x100618369]
+    +           !   1 ExecuteRenderQueueJob(RenderNodeQueuePrepareContext*, unsigned int)  (in PhoenixPoint) + 576  [0x1005aa060]
+    +           !     1 void PrepareMeshRenderNodes<true>(RenderNodeQueuePrepareThreadContext&)  (in PhoenixPoint) + 415  [0x1006ff15f]
+    +           !       1 bool BaseRenderer::FlattenSharedMaterialData<true>(BaseRenderer&, PerThreadPageAllocator&, RenderNode&)  (in PhoenixPoint) + 200  [0x10055c9e8]
+    +           !         1 Material::AcquireSharedMaterialDataFromJob() const  (in PhoenixPoint) + 11  [0x10081c78b]
+    +           1 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 152  [0x10077cc68]
+    +             1 JobQueue::ExecuteJobFromQueue()  (in PhoenixPoint) + 94  [0x10077cb5e]
+    +               1 JobQueue::Steal(JobGroup*, JobInfo*, long long, int, bool)  (in PhoenixPoint) + 246  [0x10077c496]
+    +                 1 JobQueue::Exec(JobInfo*, long long, int)  (in PhoenixPoint) + 122  [0x10077c55a]
+    +                   1 CullLocalShadowCastersJob(LocalShadowCullingJobData*, unsigned int)  (in PhoenixPoint) + 196  [0x1005b5e44]
+    +                     1 ProcessShadowsIndexListIsNodeVisibleInOut(SceneCullingParameters const&, SceneNode const*, AABB const*, IndexList&)  (in PhoenixPoint) + 104  [0x1005ce768]
+    +                       1 IsNodeVisible(SceneNode const&, AABB const&, SceneCullingParameters const&)  (in PhoenixPoint) + 3  [0x1005ce5d3]
+    519 Thread_4059056: Worker Thread
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           517 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +           ! 517 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +           !   517 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +           !     517 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    +           2 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 126  [0x10077cc4e]
+    +             2 JobQueue::Exec(JobInfo*, long long, int)  (in PhoenixPoint) + 122  [0x10077c55a]
+    +               1 CullLocalShadowCastersJob(LocalShadowCullingJobData*, unsigned int)  (in PhoenixPoint) + 175  [0x1005b5e2f]
+    +               : 1 CullShadowCastersWithoutUmbra(IndexList&, CullingParameters const&, AABB const*, unsigned long, unsigned long)  (in PhoenixPoint) + 170  [0x1005cd7ca]
+    +               :   1 IntersectAABBPlaneBoundsOptimized(AABB const&, float vector[4] const*, int)  (in PhoenixPoint) + 196  [0x1006215b4]
+    +               1 CullLocalShadowCastersJob(LocalShadowCullingJobData*, unsigned int)  (in PhoenixPoint) + 1509  [0x1005b6365]
+    +                 1 CullSpotShadows(IndexList&, SceneNode const*, AABB const*, SpotCullContext&)  (in PhoenixPoint) + 1129  [0x1005cdfc9]
+    +                   1 IntersectAABBFrustumFull(AABB const&, Plane const*)  (in PhoenixPoint) + 9  [0x1006210c9]
+    519 Thread_4059057: Worker Thread
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           516 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +           ! 516 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +           !   516 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +           !     516 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    +           2 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 126  [0x10077cc4e]
+    +           ! 2 JobQueue::Exec(JobInfo*, long long, int)  (in PhoenixPoint) + 122  [0x10077c55a]
+    +           !   1 CullLocalShadowCastersJob(LocalShadowCullingJobData*, unsigned int)  (in PhoenixPoint) + 175  [0x1005b5e2f]
+    +           !   : 1 CullShadowCastersWithoutUmbra(IndexList&, CullingParameters const&, AABB const*, unsigned long, unsigned long)  (in PhoenixPoint) + 170  [0x1005cd7ca]
+    +           !   :   1 IntersectAABBPlaneBoundsOptimized(AABB const&, float vector[4] const*, int)  (in PhoenixPoint) + 163  [0x100621593]
+    +           !   1 CullLocalShadowCastersJob(LocalShadowCullingJobData*, unsigned int)  (in PhoenixPoint) + 1509  [0x1005b6365]
+    +           !     1 CullSpotShadows(IndexList&, SceneNode const*, AABB const*, SpotCullContext&)  (in PhoenixPoint) + 435  [0x1005cdd13]
+    +           !       1 IntersectAABBFrustumFull(AABB const&, Plane const*)  (in PhoenixPoint) + 209  [0x100621191]
+    +           1 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 152  [0x10077cc68]
+    +             1 JobQueue::ExecuteJobFromQueue()  (in PhoenixPoint) + 94  [0x10077cb5e]
+    +               1 JobQueue::Steal(JobGroup*, JobInfo*, long long, int, bool)  (in PhoenixPoint) + 291  [0x10077c4c3]
+    +                 1 JobQueue::Exec(JobInfo*, long long, int)  (in PhoenixPoint) + 111  [0x10077c54f]
+    +                   1 PrepareShadowMapsJob(ShadowMapJobHeader*)  (in PhoenixPoint) + 1581  [0x1005bc17d]
+    519 Thread_4059058: Worker Thread
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           516 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +           ! 516 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +           !   516 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +           !     516 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    +           2 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 152  [0x10077cc68]
+    +           ! 2 JobQueue::ExecuteJobFromQueue()  (in PhoenixPoint) + 94  [0x10077cb5e]
+    +           !   2 JobQueue::Steal(JobGroup*, JobInfo*, long long, int, bool)  (in PhoenixPoint) + 246  [0x10077c496]
+    +           !     2 JobQueue::Exec(JobInfo*, long long, int)  (in PhoenixPoint) + 122  [0x10077c55a]
+    +           !       2 CullLocalShadowCastersJob(LocalShadowCullingJobData*, unsigned int)  (in PhoenixPoint) + 196  [0x1005b5e44]
+    +           !         2 ProcessShadowsIndexListIsNodeVisibleInOut(SceneCullingParameters const&, SceneNode const*, AABB const*, IndexList&)  (in PhoenixPoint) + 104  [0x1005ce768]
+    +           !           2 IsNodeVisible(SceneNode const&, AABB const&, SceneCullingParameters const&)  (in PhoenixPoint) + 12  [0x1005ce5dc]
+    +           1 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 126  [0x10077cc4e]
+    +             1 JobQueue::Exec(JobInfo*, long long, int)  (in PhoenixPoint) + 122  [0x10077c55a]
+    +               1 CullAllPerObjectLightsJob(CullAllPerObjectLightsJobData*, unsigned int)  (in PhoenixPoint) + 2031  [0x1005cf6df]
+    +                 1 IntersectAABBSphere(AABB const&, Sphere const&)  (in PhoenixPoint) + 23  [0x10061ff87]
+    +                   1 CalculateSqrDistance(Vector3f const&, AABB const&)  (in PhoenixPoint) + 8  [0x100618328]
+    519 Thread_4059059: Worker Thread
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           515 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +           ! 515 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +           !   515 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +           !     515 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    +           2 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 126  [0x10077cc4e]
+    +           ! 2 JobQueue::Exec(JobInfo*, long long, int)  (in PhoenixPoint) + 122  [0x10077c55a]
+    +           !   1 CullAllPerObjectLightsJob(CullAllPerObjectLightsJobData*, unsigned int)  (in PhoenixPoint) + 2031  [0x1005cf6df]
+    +           !   : 1 IntersectAABBSphere(AABB const&, Sphere const&)  (in PhoenixPoint) + 32  [0x10061ff90]
+    +           !   1 ExecuteRenderQueueJob(RenderNodeQueuePrepareContext*, unsigned int)  (in PhoenixPoint) + 576  [0x1005aa060]
+    +           !     1 void PrepareMeshRenderNodes<true>(RenderNodeQueuePrepareThreadContext&)  (in PhoenixPoint) + 415  [0x1006ff15f]
+    +           !       1 bool BaseRenderer::FlattenSharedMaterialData<true>(BaseRenderer&, PerThreadPageAllocator&, RenderNode&)  (in PhoenixPoint) + 200  [0x10055c9e8]
+    +           !         1 Material::AcquireSharedMaterialDataFromJob() const  (in PhoenixPoint) + 17  [0x10081c791]
+    +           2 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 152  [0x10077cc68]
+    +             2 JobQueue::ExecuteJobFromQueue()  (in PhoenixPoint) + 94  [0x10077cb5e]
+    +               2 JobQueue::Steal(JobGroup*, JobInfo*, long long, int, bool)  (in PhoenixPoint) + 246  [0x10077c496]
+    +                 2 JobQueue::Exec(JobInfo*, long long, int)  (in PhoenixPoint) + 122  [0x10077c55a]
+    +                   2 CullLocalShadowCastersJob(LocalShadowCullingJobData*, unsigned int)  (in PhoenixPoint) + 175  [0x1005b5e2f]
+    +                     2 CullShadowCastersWithoutUmbra(IndexList&, CullingParameters const&, AABB const*, unsigned long, unsigned long)  (in PhoenixPoint) + 170  [0x1005cd7ca]
+    +                       2 IntersectAABBPlaneBoundsOptimized(AABB const&, float vector[4] const*, int)  (in PhoenixPoint) + 178  [0x1006215a2]
+    519 Thread_4059060: Worker Thread
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           517 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +           ! 517 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +           !   517 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +           !     517 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    +           2 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 152  [0x10077cc68]
+    +             2 JobQueue::ExecuteJobFromQueue()  (in PhoenixPoint) + 94  [0x10077cb5e]
+    +               2 JobQueue::Steal(JobGroup*, JobInfo*, long long, int, bool)  (in PhoenixPoint) + 291  [0x10077c4c3]
+    +                 2 JobQueue::Exec(JobInfo*, long long, int)  (in PhoenixPoint) + 111  [0x10077c54f]
+    +                   1 PrepareShadowMapsJob(ShadowMapJobHeader*)  (in PhoenixPoint) + 1186  [0x1005bbff2]
+    +                   1 UI::UIGeometryJob(UI::UIGeometryJobData*)  (in PhoenixPoint) + 3192  [0x100c5c878]
+    519 Thread_4059061: BackgroundWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           519 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059062: BackgroundWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           519 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059063: BackgroundWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           519 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059064: BackgroundWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           519 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059065: BackgroundWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           519 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059066: BackgroundWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           519 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059067: BackgroundWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           519 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059068: BackgroundWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           519 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059069: BackgroundWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           519 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059070: BackgroundWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           519 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059071: BackgroundWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           519 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059072: BackgroundWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           519 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059073: BackgroundWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           519 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059074: BackgroundWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           519 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059075: BackgroundWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           519 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059076: BackgroundWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           519 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059077
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 algThreadJobQueueThreadFunc  (in PhoenixPoint) + 209  [0x100077311]
+    +         519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059078
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 algThreadJobQueueThreadFunc  (in PhoenixPoint) + 209  [0x100077311]
+    +         519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059079
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 algThreadJobQueueThreadFunc  (in PhoenixPoint) + 209  [0x100077311]
+    +         519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059080: UnitySubstanceThread
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 SubstanceSystem::ThreadMain(void*)  (in PhoenixPoint) + 56  [0x1007560e8]
+    +           519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +             519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +               519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059088: com.apple.audio.IOThread.client
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 HALB_IOThread::Entry(void*)  (in CoreAudio) + 72  [0x7fff3e66b05e]
+    +         519 HALC_ProxyIOContext::IOThreadEntry(void*)  (in CoreAudio) + 128  [0x7fff3e66b31c]
+    +           517 HALC_ProxyIOContext::IOWorkLoop()  (in CoreAudio) + 977  [0x7fff3e66b8b9]
+    +           ! 517 HALB_MachPort::SendSimpleMessageWithSimpleReply(unsigned int, unsigned int, int, int&, bool, unsigned int)  (in CoreAudio) + 45  [0x7fff3e66e84d]
+    +           !   517 HALB_MachPort::SendMessageWithReply(unsigned int, unsigned int, unsigned int, unsigned int, mach_msg_header_t*, bool, unsigned int)  (in CoreAudio) + 124  [0x7fff3e66e8da]
+    +           !     517 mach_msg  (in libsystem_kernel.dylib) + 60  [0x7fff67073724]
+    +           !       517 mach_msg_trap  (in libsystem_kernel.dylib) + 10  [0x7fff6707420a]
+    +           2 HALC_ProxyIOContext::IOWorkLoop()  (in CoreAudio) + 5021  [0x7fff3e66c885]
+    +             2 AUHAL::AUIOProc(unsigned int, AudioTimeStamp const*, AudioBufferList const*, AudioTimeStamp const*, AudioBufferList*, AudioTimeStamp const*, void*)  (in CoreAudio) + 1726  [0x11a206d44]
+    +               2 AUBase::DoRender(unsigned int&, AudioTimeStamp const&, unsigned int, unsigned int, AudioBufferList&)  (in CoreAudio) + 546  [0x11a32d37a]
+    +                 2 AUBase::DoRenderBus(unsigned int&, AudioTimeStamp const&, unsigned int, AUOutputElement*, unsigned int, AudioBufferList&)  (in CoreAudio) + 166  [0x11a32dca4]
+    +                   1 AUConverterBase::RenderBus(unsigned int&, AudioTimeStamp const&, unsigned int, unsigned int)  (in CoreAudio) + 656  [0x11a203560]
+    +                   : 1 FMOD::OutputCoreAudio::renderProc(void*, unsigned int*, AudioTimeStamp const*, unsigned int, unsigned int, AudioBufferList*)  (in PhoenixPoint) + 50  [0x1015cc4a2]
+    +                   :   1 FMOD::Output::mix(void*, unsigned int)  (in PhoenixPoint) + 774  [0x10158b846]
+    +                   :     1 FMOD::DSPSoundCard::read(void*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int)  (in PhoenixPoint) + 90  [0x10157b77a]
+    +                   :       1 FMOD::DSPFilter::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int)  (in PhoenixPoint) + 324  [0x101563664]
+    +                   :         1 FMOD::DSPFilter::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int)  (in PhoenixPoint) + 324  [0x101563664]
+    +                   :           1 FMOD::DSPFilter::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int)  (in PhoenixPoint) + 324  [0x101563664]
+    +                   :             1 FMOD::DSPFilter::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int)  (in PhoenixPoint) + 324  [0x101563664]
+    +                   :               1 FMOD::DSPFilter::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int)  (in PhoenixPoint) + 324  [0x101563664]
+    +                   :                 1 FMOD::DSPFilter::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int)  (in PhoenixPoint) + 324  [0x101563664]
+    +                   :                   1 FMOD::DSPFilter::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int)  (in PhoenixPoint) + 324  [0x101563664]
+    +                   :                     1 FMOD::DSPFilter::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int)  (in PhoenixPoint) + 324  [0x101563664]
+    +                   :                       1 FMOD::DSPFilter::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int)  (in PhoenixPoint) + 324  [0x101563664]
+    +                   :                         1 FMOD::DSPFilter::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int)  (in PhoenixPoint) + 324  [0x101563664]
+    +                   :                           1 FMOD::DSPFilter::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int)  (in PhoenixPoint) + 324  [0x101563664]
+    +                   :                             1 FMOD::DSPFilter::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int)  (in PhoenixPoint) + 1288  [0x101563a28]
+    +                   :                               1 UnityAudioEffect_InternalReadCallback(FMOD_DSP_STATE*, float*, float*, unsigned int, int, int)  (in PhoenixPoint) + 249  [0x100d206e9]
+    +                   :                                 1 AudioMixerFaderProcessCallback(UnityAudioEffectState*, float*, float*, unsigned int, int, int)  (in PhoenixPoint) + 877  [0x100d5249d]
+    +                   1 AUConverterBase::RenderBus(unsigned int&, AudioTimeStamp const&, unsigned int, unsigned int)  (in CoreAudio) + 715  [0x11a20359b]
+    +                     1 CrashIfClientProvidedBogusAudioBufferList  (in CoreAudio) + 6  [0x11a34576e]
+    519 Thread_4059090
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       518 FMOD::Thread::callback(void*)  (in PhoenixPoint) + 37  [0x1015b02c5]
+    +       ! 518 FMOD_OS_Time_Sleep(unsigned int)  (in PhoenixPoint) + 15  [0x1015c9d7f]
+    +       !   518 usleep  (in libsystem_c.dylib) + 53  [0x7fff66ff8618]
+    +       !     518 nanosleep  (in libsystem_c.dylib) + 199  [0x7fff66ff8724]
+    +       !       517 __semwait_signal  (in libsystem_kernel.dylib) + 10  [0x7fff6707dd8a]
+    +       !       1 cerror  (in libsystem_kernel.dylib) + 0  [0x7fff67074b25]
+    +       1 FMOD::Thread::callback(void*)  (in PhoenixPoint) + 93  [0x1015b02fd]
+    +         1 FMOD::SystemI::updateStreams()  (in PhoenixPoint) + 188  [0x1015a078c]
+    +           1 FMOD_OS_CriticalSection_Leave(FMOD_OS_CRITICALSECTION*)  (in PhoenixPoint) + 19  [0x1015ca0f3]
+    +             1 _pthread_mutex_unlock_slow  (in libsystem_pthread.dylib) + 208  [0x7fff6724381c]
+    519 Thread_4059142: tid_18503
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 PreloadManager::Run(void*)  (in PhoenixPoint) + 9  [0x100806dc9]
+    +           519 PreloadManager::Run()  (in PhoenixPoint) + 85  [0x100806e25]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059191
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Enlighten::MultithreadCpuWorkerCommon::CommandThreadFunction(void*)  (in PhoenixPoint) + 77  [0x1010ae7bd]
+    +         519 Geo::GeoEvent::Wait(unsigned int)  (in PhoenixPoint) + 41  [0x1010c4269]
+    +           519 Geo::Impl::WaitForMultipleObjects(unsigned int, Geo::Impl::t_HANDLE**, bool, int)  (in PhoenixPoint) + 486  [0x1010c3f46]
+    +             519 _pthread_cond_wait  (in libsystem_pthread.dylib) + 732  [0x7fff67246589]
+    +               519 __psynch_cvwait  (in libsystem_kernel.dylib) + 10  [0x7fff6707da1e]
+    519 Thread_4059192: EnlightenWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 TUpdateFunction(void*)  (in PhoenixPoint) + 104  [0x100fac778]
+    +           519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +             519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +               519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059193: EnlightenWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 TUpdateFunction(void*)  (in PhoenixPoint) + 104  [0x100fac778]
+    +           519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +             519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +               519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059194: EnlightenWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 TUpdateFunction(void*)  (in PhoenixPoint) + 104  [0x100fac778]
+    +           519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +             519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +               519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059195: EnlightenWorker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 TUpdateFunction(void*)  (in PhoenixPoint) + 104  [0x100fac778]
+    +           519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +             519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +               519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059196: Worker Thread
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+    +         519 JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+    +           519 JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+    +             519 _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+    +               519 _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+    +                 519 semaphore_wait_trap  (in libsystem_kernel.dylib) + 10  [0x7fff67074246]
+    519 Thread_4059202: Timer-Scheduler
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 GC_start_routine  (in libmonobdwgc-2.0.dylib) + 28  [0x10aa5ea5d]
+    +         519 GC_inner_start_routine  (in libmonobdwgc-2.0.dylib) + 90  [0x10aa5eac5]
+    +           519 inner_start_thread  (in libmonobdwgc-2.0.dylib) + 128  [0x10aa3be4a]
+    +             519 start_wrapper  (in libmonobdwgc-2.0.dylib) + 565  [0x10a9d7ebc]
+    +               519 do_runtime_invoke  (in libmonobdwgc-2.0.dylib) + 88  [0x10aa07945]
+    +                 519 mono_jit_runtime_invoke  (in libmonobdwgc-2.0.dylib) + 2458  [0x10a844a78]
+    +                   519 ???  (in <unknown binary>)  [0x11078c339]
+    +                     519 ???  (in <unknown binary>)  [0x11078c977]
+    +                       519 ???  (in <unknown binary>)  [0x11119a30a]
+    +                         519 ???  (in <unknown binary>)  [0x11119a6ef]
+    +                           519 ves_icall_System_Threading_WaitHandle_WaitOne_internal  (in libmonobdwgc-2.0.dylib) + 86  [0x10a9d4243]
+    +                             519 mono_wait_uninterrupted  (in libmonobdwgc-2.0.dylib) + 115  [0x10a9d4062]
+    +                               519 mono_w32handle_wait_multiple  (in libmonobdwgc-2.0.dylib) + 192  [0x10a9f45b3]
+    +                                 519 mono_w32handle_wait_one  (in libmonobdwgc-2.0.dylib) + 318  [0x10a9f4241]
+    +                                   518 mono_w32handle_timedwait_signal_handle  (in libmonobdwgc-2.0.dylib) + 191  [0x10a9f448e]
+    +                                   ! 518 mono_os_cond_timedwait  (in libmonobdwgc-2.0.dylib) + 135  [0x10a9f533f]
+    +                                   !   518 _pthread_cond_wait  (in libsystem_pthread.dylib) + 732  [0x7fff67246589]
+    +                                   !     518 __psynch_cvwait  (in libsystem_kernel.dylib) + 10  [0x7fff6707da1e]
+    +                                   1 mono_w32handle_timedwait_signal_handle  (in libmonobdwgc-2.0.dylib) + 202  [0x10a9f4499]
+    +                                     1 free  (in libsystem_malloc.dylib) + 33  [0x7fff670d763a]
+    519 Thread_4059211: tid_1b803
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 GC_start_routine  (in libmonobdwgc-2.0.dylib) + 28  [0x10aa5ea5d]
+    +         519 GC_inner_start_routine  (in libmonobdwgc-2.0.dylib) + 90  [0x10aa5eac5]
+    +           519 inner_start_thread  (in libmonobdwgc-2.0.dylib) + 128  [0x10aa3be4a]
+    +             519 start_wrapper  (in libmonobdwgc-2.0.dylib) + 337  [0x10a9d7dd8]
+    +               519 selector_thread  (in libmonobdwgc-2.0.dylib) + 1142  [0x10a9def1e]
+    +                 519 poll_event_wait  (in libmonobdwgc-2.0.dylib) + 113  [0x10a9df580]
+    +                   519 mono_poll  (in libmonobdwgc-2.0.dylib) + 385  [0x10aa34861]
+    +                     519 __select  (in libsystem_kernel.dylib) + 10  [0x7fff6707dcfa]
+    519 Thread_4112583: Threadpool worker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 GC_start_routine  (in libmonobdwgc-2.0.dylib) + 28  [0x10aa5ea5d]
+    +         519 GC_inner_start_routine  (in libmonobdwgc-2.0.dylib) + 90  [0x10aa5eac5]
+    +           519 inner_start_thread  (in libmonobdwgc-2.0.dylib) + 128  [0x10aa3be4a]
+    +             519 start_wrapper  (in libmonobdwgc-2.0.dylib) + 337  [0x10a9d7dd8]
+    +               519 worker_thread  (in libmonobdwgc-2.0.dylib) + 1266  [0x10a9dd2e5]
+    +                 519 _pthread_cond_wait  (in libsystem_pthread.dylib) + 732  [0x7fff67246589]
+    +                   519 __psynch_cvwait  (in libsystem_kernel.dylib) + 10  [0x7fff6707da1e]
+    519 Thread_4112846
+    + 519 start_wqthread  (in libsystem_pthread.dylib) + 13  [0x7fff67244be9]
+    +   519 _pthread_wqthread  (in libsystem_pthread.dylib) + 1035  [0x7fff67245009]
+    +     519 __workq_kernreturn  (in libsystem_kernel.dylib) + 10  [0x7fff6707e292]
+    519 Thread_4112930: Threadpool worker
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 GC_start_routine  (in libmonobdwgc-2.0.dylib) + 28  [0x10aa5ea5d]
+    +         519 GC_inner_start_routine  (in libmonobdwgc-2.0.dylib) + 90  [0x10aa5eac5]
+    +           519 inner_start_thread  (in libmonobdwgc-2.0.dylib) + 128  [0x10aa3be4a]
+    +             519 start_wrapper  (in libmonobdwgc-2.0.dylib) + 337  [0x10a9d7dd8]
+    +               519 worker_thread  (in libmonobdwgc-2.0.dylib) + 1266  [0x10a9dd2e5]
+    +                 519 _pthread_cond_wait  (in libsystem_pthread.dylib) + 732  [0x7fff67246589]
+    +                   519 __psynch_cvwait  (in libsystem_kernel.dylib) + 10  [0x7fff6707da1e]
+    519 Thread_4113269: tid_69f2f
+    + 519 thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+    +   519 _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+    +     519 _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+    +       519 GC_start_routine  (in libmonobdwgc-2.0.dylib) + 28  [0x10aa5ea5d]
+    +         519 GC_inner_start_routine  (in libmonobdwgc-2.0.dylib) + 90  [0x10aa5eac5]
+    +           519 inner_start_thread  (in libmonobdwgc-2.0.dylib) + 128  [0x10aa3be4a]
+    +             519 start_wrapper  (in libmonobdwgc-2.0.dylib) + 337  [0x10a9d7dd8]
+    +               519 monitor_thread  (in libmonobdwgc-2.0.dylib) + 185  [0x10a9dc7bd]
+    +                 519 mono_thread_info_sleep  (in libmonobdwgc-2.0.dylib) + 784  [0x10aa3c25a]
+    +                   519 _pthread_cond_wait  (in libsystem_pthread.dylib) + 732  [0x7fff67246589]
+    +                     519 __psynch_cvwait  (in libsystem_kernel.dylib) + 10  [0x7fff6707da1e]
+    519 Thread_4113465
+    + 519 start_wqthread  (in libsystem_pthread.dylib) + 13  [0x7fff67244be9]
+    +   519 _pthread_wqthread  (in libsystem_pthread.dylib) + 1552  [0x7fff6724520e]
+    +     519 __workq_kernreturn  (in libsystem_kernel.dylib) + 10  [0x7fff6707e292]
+    488 Thread_<multiple>   DispatchQueue_972: com.Metal.CommandQueueDispatch  (serial)
+    + 488 start_wqthread  (in libsystem_pthread.dylib) + 13  [0x7fff67244be9]
+    +   488 _pthread_wqthread  (in libsystem_pthread.dylib) + 980  [0x7fff67244fd2]
+    +     488 _dispatch_workloop_worker_thread  (in libdispatch.dylib) + 880  [0x7fff66f0cd71]
+    +       488 _dispatch_root_queue_drain_deferred_wlh  (in libdispatch.dylib) + 332  [0x7fff66f08f5d]
+    +         488 _dispatch_queue_invoke  (in libdispatch.dylib) + 373  [0x7fff66efb1b6]
+    +           488 _dispatch_queue_serial_drain  (in libdispatch.dylib) + 222  [0x7fff66f080ca]
+    +             488 _dispatch_source_invoke  (in libdispatch.dylib) + 620  [0x7fff66ef60d1]
+    +               488 _dispatch_continuation_pop  (in libdispatch.dylib) + 472  [0x7fff66f06ed1]
+    +                 488 _dispatch_client_callout  (in libdispatch.dylib) + 8  [0x7fff66ef3e08]
+    +                   488 -[_MTLCommandQueue _submitAvailableCommandBuffers]  (in Metal) + 872  [0x7fff433849ad]
+    +                     488 ???  (in GeForceMTLDriver)  load address 0x7fff3a3d8000 + 0xc6e81  [0x7fff3a49ee81]
+    +                       488 -[MTLIOAccelCommandQueue submitCommandBuffers:count:]  (in Metal) + 678  [0x7fff43358269]
+    +                         488 IOAccelCommandQueueSubmitCommandBuffers  (in IOAccelerator) + 136  [0x7fff5936043a]
+    +                           488 IOConnectCallMethod  (in IOKit) + 186  [0x7fff413c5c84]
+    +                             488 io_connect_method  (in IOKit) + 369  [0x7fff413c5e57]
+    +                               488 mach_msg  (in libsystem_kernel.dylib) + 60  [0x7fff67073724]
+    +                                 488 mach_msg_trap  (in libsystem_kernel.dylib) + 10  [0x7fff6707420a]
+    481 Thread_4113715
+    + 480 start_wqthread  (in libsystem_pthread.dylib) + 13  [0x7fff67244be9]
+    + ! 480 _pthread_wqthread  (in libsystem_pthread.dylib) + 1035  [0x7fff67245009]
+    + !   480 __workq_kernreturn  (in libsystem_kernel.dylib) + 10  [0x7fff6707e292]
+    + 1 start_wqthread  (in libsystem_pthread.dylib) + 0  [0x7fff67244bdc]
+    351 Thread_4113929
+    + 351 start_wqthread  (in libsystem_pthread.dylib) + 13  [0x7fff67244be9]
+    +   351 _pthread_wqthread  (in libsystem_pthread.dylib) + 1035  [0x7fff67245009]
+    +     351 __workq_kernreturn  (in libsystem_kernel.dylib) + 10  [0x7fff6707e292]
+    43 Thread_4113466
+    + 43 start_wqthread  (in libsystem_pthread.dylib) + 13  [0x7fff67244be9]
+    +   43 _pthread_wqthread  (in libsystem_pthread.dylib) + 1035  [0x7fff67245009]
+    +     43 __workq_kernreturn  (in libsystem_kernel.dylib) + 10  [0x7fff6707e292]
+    26 Thread_4113715   DispatchQueue_973: com.Metal.CompletionQueueDispatch  (serial)
+      26 start_wqthread  (in libsystem_pthread.dylib) + 13  [0x7fff67244be9]
+        26 _pthread_wqthread  (in libsystem_pthread.dylib) + 980  [0x7fff67244fd2]
+          26 _dispatch_workloop_worker_thread  (in libdispatch.dylib) + 880  [0x7fff66f0cd71]
+            26 _dispatch_root_queue_drain_deferred_wlh  (in libdispatch.dylib) + 332  [0x7fff66f08f5d]
+              26 _dispatch_queue_invoke  (in libdispatch.dylib) + 373  [0x7fff66efb1b6]
+                26 _dispatch_queue_serial_drain  (in libdispatch.dylib) + 222  [0x7fff66f080ca]
+                  26 _dispatch_source_invoke  (in libdispatch.dylib) + 620  [0x7fff66ef60d1]
+                    26 _dispatch_continuation_pop  (in libdispatch.dylib) + 472  [0x7fff66f06ed1]
+                      26 _dispatch_client_callout  (in libdispatch.dylib) + 8  [0x7fff66ef3e08]
+                        26 dispatch_mig_server  (in libdispatch.dylib) + 413  [0x7fff66f0001a]
+                          26 _IODispatchCalloutWithDispatch  (in IOKit) + 33  [0x7fff413d4e62]
+                            26 IODispatchCalloutFromCFMessage  (in IOKit) + 365  [0x7fff413d4fd9]
+                              26 ioAccelCommandQueueBlockFenceCallback  (in IOAccelerator) + 44  [0x7fff593602e5]
+                                26 -[_MTLCommandQueue commandBufferDidComplete:startTime:completionTime:error:]  (in Metal) + 279  [0x7fff43384faa]
+                                  26 ???  (in GeForceMTLDriver)  load address 0x7fff3a3d8000 + 0xc4fd6  [0x7fff3a49cfd6]
+                                    26 -[MTLIOAccelCommandBuffer didCompleteWithStartTime:endTime:error:]  (in Metal) + 104  [0x7fff433397ef]
+                                      26 MTLIOAccelCommandBufferStorageDealloc  (in Metal) + 24  [0x7fff4337bf96]
+                                        25 MTLIOAccelCommandBufferStorageReset  (in Metal) + 14  [0x7fff4337c001]
+                                        ! 25 MTLIOAccelCommandBufferStorageReleaseExtraResources  (in Metal) + 58  [0x7fff4337c21b]
+                                        !   25 MTLIOAccelPooledResourceRelease  (in Metal) + 181  [0x7fff4333e381]
+                                        !     25 -[MTLIOAccelResource setPurgeableState:]  (in Metal) + 131  [0x7fff43356477]
+                                        !       25 IOAccelResourceSetPurgeable  (in IOAccelerator) + 106  [0x7fff593606d6]
+                                        !         25 IOConnectCallMethod  (in IOKit) + 186  [0x7fff413c5c84]
+                                        !           25 io_connect_method  (in IOKit) + 369  [0x7fff413c5e57]
+                                        !             25 mach_msg  (in libsystem_kernel.dylib) + 60  [0x7fff67073724]
+                                        !               25 mach_msg_trap  (in libsystem_kernel.dylib) + 10  [0x7fff6707420a]
+                                        1 MTLIOAccelCommandBufferStorageReset  (in Metal) + 39  [0x7fff4337c01a]
+                                          1 -[MTLResourceList releaseAllObjectsAndReset]  (in Metal) + 114  [0x7fff4337c9b1]
+                                            1 objc_msgSend  (in libobjc.A.dylib) + 26  [0x7fff66305e9a]
+
+Total number in stack (recursive counted multiple, when >=5):
+        48       _pthread_body  (in libsystem_pthread.dylib) + 340  [0x7fff67245661]
+        48       _pthread_start  (in libsystem_pthread.dylib) + 377  [0x7fff6724550d]
+        48       thread_start  (in libsystem_pthread.dylib) + 13  [0x7fff67244bf9]
+        37       semaphore_wait_trap  (in libsystem_kernel.dylib) + 0  [0x7fff6707423c]
+        34       Thread::RunThreadWrapper(void*)  (in PhoenixPoint) + 60  [0x10085ae1c]
+        33       _dispatch_sema4_wait  (in libdispatch.dylib) + 16  [0x7fff66f038e3]
+        33       _dispatch_semaphore_wait_slow  (in libdispatch.dylib) + 101  [0x7fff66efb9c9]
+        24       JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 281  [0x10077cce9]
+        24       JobQueue::WorkLoop(void*)  (in PhoenixPoint) + 9  [0x10077bed9]
+        11       FMOD::DSPFilter::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int)  (in PhoenixPoint) + 324  [0x101563664]
+        10       JobQueue::Exec(JobInfo*, long long, int)  (in PhoenixPoint) + 122  [0x10077c55a]
+        7       __psynch_cvwait  (in libsystem_kernel.dylib) + 0  [0x7fff6707da14]
+        7       _pthread_cond_wait  (in libsystem_pthread.dylib) + 732  [0x7fff67246589]
+        7       start_wqthread  (in libsystem_pthread.dylib) + 13  [0x7fff67244be9]
+        6       GC_inner_start_routine  (in libmonobdwgc-2.0.dylib) + 90  [0x10aa5eac5]
+        6       GC_start_routine  (in libmonobdwgc-2.0.dylib) + 28  [0x10aa5ea5d]
+        6       JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 126  [0x10077cc4e]
+        6       inner_start_thread  (in libmonobdwgc-2.0.dylib) + 128  [0x10aa3be4a]
+        6       mach_msg  (in libsystem_kernel.dylib) + 60  [0x7fff67073724]
+        6       mach_msg_trap  (in libsystem_kernel.dylib) + 0  [0x7fff67074200]
+        5       JobQueue::ExecuteJobFromQueue()  (in PhoenixPoint) + 94  [0x10077cb5e]
+        5       JobQueue::ProcessJobs(void*)  (in PhoenixPoint) + 152  [0x10077cc68]
+        5       __workq_kernreturn  (in libsystem_kernel.dylib) + 0  [0x7fff6707e288]
+        5       start_wrapper  (in libmonobdwgc-2.0.dylib) + 337  [0x10a9d7dd8]
+
+Sort by top of stack, same collapsed (when >= 5):
+        semaphore_wait_trap  (in libsystem_kernel.dylib)        19171
+        __psynch_cvwait  (in libsystem_kernel.dylib)        3594
+        mach_msg_trap  (in libsystem_kernel.dylib)        2068
+        __workq_kernreturn  (in libsystem_kernel.dylib)        1912
+        __select  (in libsystem_kernel.dylib)        519
+        __semwait_signal  (in libsystem_kernel.dylib)        517
+        __ulock_wait  (in libsystem_kernel.dylib)        25
+        _platform_memmove$VARIANT$Haswell  (in libsystem_platform.dylib)        12
+        IntersectAABBPlaneBoundsOptimized(AABB const&, float vector[4] const*, int)  (in PhoenixPoint)        5
+
+Binary Images:
+       0x100000000 -        0x1018567a7 +com.Company.ProductName (1.0 - 0) <DD8CF935-E7B4-37DD-AA66-9A68143F5403> /var/folders/qk/4jb_9w596ll25ykrw96sscpm0000gp/T/AppTranslocation/6B091A5F-283A-42ED-80E4-A493C6CB5C53/d/PhoenixPoint.app/Contents/MacOS/PhoenixPoint
+       0x10a2da000 -        0x10a2e7ff7  com.apple.iokit.IOHIDLib (2.0.0 - 2.0.0) <0EE39934-EEA4-3A7D-AF86-7B6D6470EEC1> /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib
+       0x10a798000 -        0x10a7e29df  dyld (551.3) <AFAB4EFA-7020-34B1-BBEF-0F26C6D3CA36> /usr/lib/dyld
+       0x10a836000 -        0x10ab4dfff +libmonobdwgc-2.0.dylib (0) <4C528144-4CBD-31C5-AAD7-2052C1C57723> /var/folders/qk/4jb_9w596ll25ykrw96sscpm0000gp/T/AppTranslocation/6B091A5F-283A-42ED-80E4-A493C6CB5C53/d/PhoenixPoint.app/Contents/Frameworks/MonoBleedingEdge/MonoEmbedRuntime/osx/libmonobdwgc-2.0.dylib
+       0x10ae33000 -        0x10ae37ffb  com.apple.audio.AppleHDAHALPlugIn (281.51 - 281.51) <DCCD4E19-B09A-36D6-A19D-2549FCD7D5F0> /System/Library/Extensions/AppleHDA.kext/Contents/PlugIns/AppleHDAHALPlugIn.bundle/Contents/MacOS/AppleHDAHALPlugIn
+       0x10daa8000 -        0x10daaafff  AppleIntelHSWVA (10.32.48) <FD2E6A57-A512-356A-BE16-9B276C39A303> /System/Library/Extensions/AppleIntelHSWVA.bundle/Contents/MacOS/AppleIntelHSWVA
+       0x11a200000 -        0x11a3a8fff  com.apple.audio.units.Components (1.14 - 1.14) <540CC580-7CEE-3B00-ADF7-F6BFBBF70999> /System/Library/Components/CoreAudio.component/Contents/MacOS/CoreAudio
+       0x1f37eb000 -        0x1f39bbfff  com.apple.AppleIntelHD5000GraphicsVADriver (10.32.48 - 10.3.2) <B29FC545-0808-312C-96C1-30CEA0F27645> /System/Library/Extensions/AppleIntelHD5000GraphicsVADriver.bundle/Contents/MacOS/AppleIntelHD5000GraphicsVADriver
+       0x1f3a58000 -        0x1f3af8fff  com.apple.GeForceVADriver (10.30.25 - 10.3.0) <34A333AC-4433-36D3-B729-0CE0BD1B7AF7> /System/Library/Extensions/GeForceVADriver.bundle/Contents/MacOS/GeForceVADriver
+    0x7fff3714b000 -     0x7fff37499fff  com.apple.RawCamera.bundle (8.03.0 - 1017.3.4) <FC6A4AFD-2F60-3006-9C42-577F62F9B2A4> /System/Library/CoreServices/RawCamera.bundle/Contents/MacOS/RawCamera
+    0x7fff38aa8000 -     0x7fff38b2dff7  com.apple.driver.AppleIntelHD5000GraphicsMTLDriver (10.32.48 - 10.3.2) <22E85FE9-9836-3487-A6FC-19C545C73B31> /System/Library/Extensions/AppleIntelHD5000GraphicsMTLDriver.bundle/Contents/MacOS/AppleIntelHD5000GraphicsMTLDriver
+    0x7fff3a3d8000 -     0x7fff3a57aff7  com.apple.GeForceMTLDriver (10.30.25 - 10.3.0) <1C84917A-3E3C-3A66-9531-0BE51DAFA62D> /System/Library/Extensions/GeForceMTLDriver.bundle/Contents/MacOS/GeForceMTLDriver
+    0x7fff3ad6d000 -     0x7fff3af4cfff  com.apple.avfoundation (2.0 - 1535.42) <A4E74521-3C02-329A-BCB7-C2C4308DECD4> /System/Library/Frameworks/AVFoundation.framework/Versions/A/AVFoundation
+    0x7fff3af4d000 -     0x7fff3b006fff  com.apple.audio.AVFAudio (1.0 - ???) <ECE63BA3-4344-3522-904B-71F89677AC7D> /System/Library/Frameworks/AVFoundation.framework/Versions/A/Frameworks/AVFAudio.framework/Versions/A/AVFAudio
+    0x7fff3b10c000 -     0x7fff3b10cfff  com.apple.Accelerate (1.11 - Accelerate 1.11) <8632A9C5-19EA-3FD7-A44D-80765CC9C540> /System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate
+    0x7fff3b10d000 -     0x7fff3b123fef  libCGInterfaces.dylib (417.2) <ED0EAE3C-D963-3DF7-A408-4F00FF1C8C34> /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vImage.framework/Versions/A/Libraries/libCGInterfaces.dylib
+    0x7fff3b124000 -     0x7fff3b622fc3  com.apple.vImage (8.1 - ???) <A243A7EF-0C8E-3A9A-AA38-44AFD7507F00> /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vImage.framework/Versions/A/vImage
+    0x7fff3b623000 -     0x7fff3b77dfe3  libBLAS.dylib (1211.50.2) <62C659EB-3E32-3B5F-83BF-79F5DF30D5CE> /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib
+    0x7fff3b77e000 -     0x7fff3b7acfef  libBNNS.dylib (38.1) <7BAEFDCA-3227-3E07-80D8-59B6370B89C6> /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBNNS.dylib
+    0x7fff3b7ad000 -     0x7fff3bb6cff7  libLAPACK.dylib (1211.50.2) <40ADBA5F-8B2D-30AC-A7AD-7B17C37EE52D> /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libLAPACK.dylib
+    0x7fff3bb6d000 -     0x7fff3bb82ff7  libLinearAlgebra.dylib (1211.50.2) <E8E0B7FD-A0B7-31E5-AF01-81781F71EBBE> /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libLinearAlgebra.dylib
+    0x7fff3bb83000 -     0x7fff3bb88ff3  libQuadrature.dylib (3) <3D6BF66A-55B2-3692-BAC7-DEB0C676ED29> /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libQuadrature.dylib
+    0x7fff3bb89000 -     0x7fff3bc09fff  libSparse.dylib (79.50.2) <0DC25CDD-F8C1-3D6E-B472-8B060708424F> /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libSparse.dylib
+    0x7fff3bc0a000 -     0x7fff3bc1dfff  libSparseBLAS.dylib (1211.50.2) <722573CC-31CC-34B2-9032-E4F652A9CCFE> /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libSparseBLAS.dylib
+    0x7fff3bc1e000 -     0x7fff3bdcbfc3  libvDSP.dylib (622.50.5) <40690941-CF89-3F90-A0AC-A4D200744A5D> /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libvDSP.dylib
+    0x7fff3bdcc000 -     0x7fff3be7dfff  libvMisc.dylib (622.50.5) <BA2532DF-2D68-3DD0-9B59-D434BF702AA4> /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libvMisc.dylib
+    0x7fff3be7e000 -     0x7fff3be7efff  com.apple.Accelerate.vecLib (3.11 - vecLib 3.11) <54FF3B43-E66C-3F36-B34B-A2B3B0A36502> /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/vecLib
+    0x7fff3c171000 -     0x7fff3cfcffff  com.apple.AppKit (6.9 - 1561.40.112) <C839B0C1-F7EE-3056-985C-63CF1A030EC4> /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit
+    0x7fff3d021000 -     0x7fff3d021fff  com.apple.ApplicationServices (48 - 50) <8DA47D38-B07B-3AE2-B343-4579864430C6> /System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices
+    0x7fff3d022000 -     0x7fff3d088fff  com.apple.ApplicationServices.ATS (377 - 445.3) <000C4E9F-E0D9-371D-B304-83BA37460724> /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ATS.framework/Versions/A/ATS
+    0x7fff3d121000 -     0x7fff3d243fff  libFontParser.dylib (222.1.4) <FF68FAF6-70BB-3E39-A263-E17B6F5E00D0> /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ATS.framework/Versions/A/Resources/libFontParser.dylib
+    0x7fff3d244000 -     0x7fff3d28eff7  libFontRegistry.dylib (221.3) <C84F7112-4764-3F4B-9FBA-4A022CF6346B> /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ATS.framework/Versions/A/Resources/libFontRegistry.dylib
+    0x7fff3d333000 -     0x7fff3d366ff7  libTrueTypeScaler.dylib (222.1.4) <4734ECD6-6F41-3A16-AE35-265BDC1572C5> /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ATS.framework/Versions/A/Resources/libTrueTypeScaler.dylib
+    0x7fff3d3d0000 -     0x7fff3d3d4ff3  com.apple.ColorSyncLegacy (4.13.0 - 1) <A5FB2694-1559-34A8-A3D3-2029F68A63CA> /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ColorSyncLegacy.framework/Versions/A/ColorSyncLegacy
+    0x7fff3d474000 -     0x7fff3d4c6ffb  com.apple.HIServices (1.22 - 624) <828E189A-62F9-3961-8A89-22F508870CC5> /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/HIServices.framework/Versions/A/HIServices
+    0x7fff3d4c7000 -     0x7fff3d4d5fff  com.apple.LangAnalysis (1.7.0 - 1.7.0) <B65FF7E6-E9B5-34D8-8CA7-63D415A8A9A6> /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/LangAnalysis.framework/Versions/A/LangAnalysis
+    0x7fff3d4d6000 -     0x7fff3d522fff  com.apple.print.framework.PrintCore (13.4 - 503.2) <B90C67C1-0292-3CEC-885D-F1882CD104BE> /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/PrintCore
+    0x7fff3d523000 -     0x7fff3d55dfff  com.apple.QD (3.12 - 404.2) <38B20AFF-9D54-3B52-A6DC-C0D71380AA5F> /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/QD.framework/Versions/A/QD
+    0x7fff3d55e000 -     0x7fff3d56afff  com.apple.speech.synthesis.framework (7.5.1 - 7.5.1) <84ADDF38-36F1-3D3B-B28D-8865FA10FCD7> /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/SpeechSynthesis.framework/Versions/A/SpeechSynthesis
+    0x7fff3d56b000 -     0x7fff3d7f8ff7  com.apple.audio.toolbox.AudioToolbox (1.14 - 1.14) <87D81714-F167-39F5-B5E7-A7A432EDAB5B> /System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox
+    0x7fff3d7fa000 -     0x7fff3d7fafff  com.apple.audio.units.AudioUnit (1.14 - 1.14) <513C9A4B-4F6D-3A21-921F-2CA101B97830> /System/Library/Frameworks/AudioUnit.framework/Versions/A/AudioUnit
+    0x7fff3db1c000 -     0x7fff3deb6ff7  com.apple.CFNetwork (897.15 - 897.15) <0C03AF39-3527-3E0D-8413-8E1B2A962F0D> /System/Library/Frameworks/CFNetwork.framework/Versions/A/CFNetwork
+    0x7fff3decb000 -     0x7fff3decbfff  com.apple.Carbon (158 - 158) <F8B370D9-2103-3276-821D-ACC756167F86> /System/Library/Frameworks/Carbon.framework/Versions/A/Carbon
+    0x7fff3decc000 -     0x7fff3decfffb  com.apple.CommonPanels (1.2.6 - 98) <2391761C-5CAA-3F68-86B7-50B37927B104> /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/CommonPanels.framework/Versions/A/CommonPanels
+    0x7fff3ded0000 -     0x7fff3e1d5fff  com.apple.HIToolbox (2.1.1 - 911.10) <BF7F9C0E-C732-3FB2-9BBC-362888BDA57B> /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Versions/A/HIToolbox
+    0x7fff3e1d6000 -     0x7fff3e1d9ffb  com.apple.help (1.3.8 - 66) <DEBADFA8-C189-3195-B0D6-A1F2DE95882A> /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Help.framework/Versions/A/Help
+    0x7fff3e1da000 -     0x7fff3e1dffff  com.apple.ImageCapture (9.0 - 9.0) <23B4916F-3B43-3DFF-B956-FC390EECA284> /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/ImageCapture.framework/Versions/A/ImageCapture
+    0x7fff3e1e0000 -     0x7fff3e275ffb  com.apple.ink.framework (10.9 - 221) <5206C8B0-22DA-36C9-998E-846EDB626D5B> /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Ink.framework/Versions/A/Ink
+    0x7fff3e276000 -     0x7fff3e290ff7  com.apple.openscripting (1.7 - 174) <1B2A1F9E-5534-3D61-83CA-9199B39E8708> /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/OpenScripting.framework/Versions/A/OpenScripting
+    0x7fff3e2b1000 -     0x7fff3e2b2fff  com.apple.print.framework.Print (12 - 267) <3682ABFB-2561-3419-847D-02C247F4800D> /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Print.framework/Versions/A/Print
+    0x7fff3e2b3000 -     0x7fff3e2b5ff7  com.apple.securityhi (9.0 - 55006) <C1406B8D-7D05-3959-808F-9C82189CF57F> /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/SecurityHI.framework/Versions/A/SecurityHI
+    0x7fff3e2b6000 -     0x7fff3e2bcfff  com.apple.speech.recognition.framework (6.0.3 - 6.0.3) <2ED8643D-B0C3-3F17-82A2-BBF13E6CBABC> /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/SpeechRecognition.framework/Versions/A/SpeechRecognition
+    0x7fff3e3dd000 -     0x7fff3e3ddfff  com.apple.Cocoa (6.11 - 22) <4CF8E31C-B5C7-367B-B73D-1A8AC8E41B7F> /System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa
+    0x7fff3e3eb000 -     0x7fff3e4a4fff  com.apple.ColorSync (4.13.0 - 3325) <D283C285-447D-3258-A7E4-59532123B8FF> /System/Library/Frameworks/ColorSync.framework/Versions/A/ColorSync
+    0x7fff3e631000 -     0x7fff3e6c4ff7  com.apple.audio.CoreAudio (4.3.0 - 4.3.0) <6E3F958D-79BB-3658-99AD-59F16BF756F1> /System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio
+    0x7fff3e72b000 -     0x7fff3e754ffb  com.apple.CoreBluetooth (1.0 - 1) <E1335074-9D07-370E-8440-61C4874BAC56> /System/Library/Frameworks/CoreBluetooth.framework/Versions/A/CoreBluetooth
+    0x7fff3e755000 -     0x7fff3eaabfef  com.apple.CoreData (120 - 851) <A2B59780-FB16-36A3-8EE0-E0EF072454E0> /System/Library/Frameworks/CoreData.framework/Versions/A/CoreData
+    0x7fff3eaac000 -     0x7fff3eb91ff7  com.apple.CoreDisplay (1.0 - 97.16) <FCFB2A8C-7A5E-314B-AA12-04D33656A0E6> /System/Library/Frameworks/CoreDisplay.framework/Versions/A/CoreDisplay
+    0x7fff3eb92000 -     0x7fff3f033fef  com.apple.CoreFoundation (6.9 - 1452.23) <945E5C0A-86C5-336E-A64F-5BF06E78985A> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation
+    0x7fff3f035000 -     0x7fff3f645fef  com.apple.CoreGraphics (2.0 - 1161.10) <31C36FA0-4026-3347-93FD-71CD7287A6F0> /System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics
+    0x7fff3f647000 -     0x7fff3f936fff  com.apple.CoreImage (13.0.0 - 579.4.11) <702F8035-26FE-3C78-8587-4C9563E03CC4> /System/Library/Frameworks/CoreImage.framework/Versions/A/CoreImage
+    0x7fff3fbc5000 -     0x7fff3fcaeff7  com.apple.CoreMedia (1.0 - 2275.61.1) <C440188D-BC13-3E1C-A322-5F1FF70BDB34> /System/Library/Frameworks/CoreMedia.framework/Versions/A/CoreMedia
+    0x7fff3fcaf000 -     0x7fff3fcfdfff  com.apple.CoreMediaIO (812.0 - 4994) <2FDA2056-D26F-343D-AB91-488CF809FE63> /System/Library/Frameworks/CoreMediaIO.framework/Versions/A/CoreMediaIO
+    0x7fff3fcfe000 -     0x7fff3fcfefff  com.apple.CoreServices (822.31 - 822.31) <615919A2-AE11-3F27-9A37-FB0CFF8D36B6> /System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices
+    0x7fff3fcff000 -     0x7fff3fd73ffb  com.apple.AE (735.1 - 735.1) <08EBA184-20F7-3725-AEA6-C314448161C6> /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/AE.framework/Versions/A/AE
+    0x7fff3fd74000 -     0x7fff4004bfff  com.apple.CoreServices.CarbonCore (1178.4 - 1178.4) <0D5E19BF-18CB-3FA4-8A5F-F6C787C5EE08> /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/CarbonCore
+    0x7fff4004c000 -     0x7fff40080fff  com.apple.DictionaryServices (1.2 - 284.2) <6505B075-41C3-3C62-A4C3-85CE3F6825CD> /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/DictionaryServices.framework/Versions/A/DictionaryServices
+    0x7fff40081000 -     0x7fff40089ffb  com.apple.CoreServices.FSEvents (1239.50.1 - 1239.50.1) <3637CEC7-DF0E-320E-9634-44A442925C65> /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/FSEvents
+    0x7fff4008a000 -     0x7fff40247ff7  com.apple.LaunchServices (822.31 - 822.31) <BDFAB0FF-C2C6-375B-9E84-E43E267E2F82> /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/LaunchServices
+    0x7fff40248000 -     0x7fff402f8ff7  com.apple.Metadata (10.7.0 - 1191.4.13) <B5C22E70-C265-3C9F-865F-B138994A418D> /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Metadata
+    0x7fff402f9000 -     0x7fff40359fff  com.apple.CoreServices.OSServices (822.31 - 822.31) <690E3C93-8799-39FF-8663-190A49B002E3> /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/OSServices.framework/Versions/A/OSServices
+    0x7fff4035a000 -     0x7fff403c8fff  com.apple.SearchKit (1.4.0 - 1.4.0) <3662545A-B1CF-3079-BDCD-C83855CEFEEE> /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/SearchKit.framework/Versions/A/SearchKit
+    0x7fff403c9000 -     0x7fff403edffb  com.apple.coreservices.SharedFileList (71.21 - 71.21) <7DB79D78-9925-33F8-96BA-35AB7AEB326A> /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/SharedFileList.framework/Versions/A/SharedFileList
+    0x7fff4068e000 -     0x7fff407defff  com.apple.CoreText (352.0 - 578.18) <B8454115-2A4B-3585-A7A1-B47A638F2EEB> /System/Library/Frameworks/CoreText.framework/Versions/A/CoreText
+    0x7fff407df000 -     0x7fff40819fff  com.apple.CoreVideo (1.8 - 0.0) <86CCC036-51BB-3DD1-9601-D93798BCCD0F> /System/Library/Frameworks/CoreVideo.framework/Versions/A/CoreVideo
+    0x7fff4081a000 -     0x7fff408a5ff3  com.apple.framework.CoreWLAN (13.0 - 1350.1) <E862CC02-69D2-3503-887B-B6E8223081E7> /System/Library/Frameworks/CoreWLAN.framework/Versions/A/CoreWLAN
+    0x7fff40b20000 -     0x7fff40b25fff  com.apple.DiskArbitration (2.7 - 2.7) <A6450227-DD23-3100-ADBF-DB1C21E979F7> /System/Library/Frameworks/DiskArbitration.framework/Versions/A/DiskArbitration
+    0x7fff40ce6000 -     0x7fff410acfff  com.apple.Foundation (6.9 - 1452.23) <E64540AD-1755-3C16-8537-552A00E92541> /System/Library/Frameworks/Foundation.framework/Versions/C/Foundation
+    0x7fff4111c000 -     0x7fff4114cfff  com.apple.GSS (4.0 - 2.0) <41087278-74AE-3FA5-8C0E-9C78EB696299> /System/Library/Frameworks/GSS.framework/Versions/A/GSS
+    0x7fff4125e000 -     0x7fff41362ffb  com.apple.Bluetooth (6.0.5 - 6.0.5f3) <85F1B5A6-03C5-3D5A-90B8-5FC86349E330> /System/Library/Frameworks/IOBluetooth.framework/Versions/A/IOBluetooth
+    0x7fff413c2000 -     0x7fff4145dff7  com.apple.framework.IOKit (2.0.2 - 1445.50.26) <A63CAC8D-BF57-34FD-9A88-2F74546F2000> /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit
+    0x7fff4145f000 -     0x7fff41466ffb  com.apple.IOSurface (211.12 - 211.12) <392CA7DE-B365-364E-AF4A-33EC2CC48E6F> /System/Library/Frameworks/IOSurface.framework/Versions/A/IOSurface
+    0x7fff414bd000 -     0x7fff41636fe7  com.apple.ImageIO.framework (3.3.0 - 1739.1) <E5E88083-26A7-3E48-8EB4-A1F04E0737CE> /System/Library/Frameworks/ImageIO.framework/Versions/A/ImageIO
+    0x7fff41637000 -     0x7fff4163bffb  libGIF.dylib (1739.1) <D39BE184-279C-36AC-B233-EE17CACDEDB3> /System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libGIF.dylib
+    0x7fff4163c000 -     0x7fff41723fef  libJP2.dylib (1739.1) <053925CD-59DB-372F-98A8-C2372FF0B899> /System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libJP2.dylib
+    0x7fff41724000 -     0x7fff41747ff7  libJPEG.dylib (1739.1) <E925D511-B457-3732-9B67-1A7DFB228EA4> /System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libJPEG.dylib
+    0x7fff41a23000 -     0x7fff41a49feb  libPng.dylib (1739.1) <48633B0C-BE01-3D94-9D9D-A95D50466AF9> /System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libPng.dylib
+    0x7fff41a4a000 -     0x7fff41a4cffb  libRadiance.dylib (1739.1) <A6F1064A-FFFC-3B06-8CBF-5204CDFC41C6> /System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libRadiance.dylib
+    0x7fff41a4d000 -     0x7fff41a9bfef  libTIFF.dylib (1739.1) <AD819413-29E3-3B2F-8997-2F88A82D9D83> /System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libTIFF.dylib
+    0x7fff42937000 -     0x7fff42950ff7  com.apple.Kerberos (3.0 - 1) <F86DCCDF-93C1-38B3-82C2-477C12E8EE6D> /System/Library/Frameworks/Kerberos.framework/Versions/A/Kerberos
+    0x7fff42c0e000 -     0x7fff42c15fff  com.apple.MediaAccessibility (1.0 - 114) <9F72AACD-BAEB-3646-BD0F-12C47591C20D> /System/Library/Frameworks/MediaAccessibility.framework/Versions/A/MediaAccessibility
+    0x7fff42cc1000 -     0x7fff43328ff7  com.apple.MediaToolbox (1.0 - 2275.61.1) <E92B8487-AE1C-3EA9-A80B-99B43AD75FC0> /System/Library/Frameworks/MediaToolbox.framework/Versions/A/MediaToolbox
+    0x7fff4332a000 -     0x7fff433abff7  com.apple.Metal (125.25 - 125.25) <B2ECA050-4C13-3EAD-A1C8-AC21EFF122F1> /System/Library/Frameworks/Metal.framework/Versions/A/Metal
+    0x7fff433c8000 -     0x7fff433e3fff  com.apple.MetalPerformanceShaders.MPSCore (1.0 - 1) <0B4455FE-5C97-345C-B416-325EC6D88A2A> /System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSCore.framework/Versions/A/MPSCore
+    0x7fff433e4000 -     0x7fff43453fef  com.apple.MetalPerformanceShaders.MPSImage (1.0 - 1) <87F14199-C445-34C2-90F8-57C29212483E> /System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSImage.framework/Versions/A/MPSImage
+    0x7fff43454000 -     0x7fff43478fff  com.apple.MetalPerformanceShaders.MPSMatrix (1.0 - 1) <BD50FD9C-CE92-34AF-8663-968BF89202A0> /System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSMatrix.framework/Versions/A/MPSMatrix
+    0x7fff43479000 -     0x7fff43560ff7  com.apple.MetalPerformanceShaders.MPSNeuralNetwork (1.0 - 1) <FBDDCAE6-EC6E-361F-B924-B3EBDEAC2D2F> /System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSNeuralNetwork.framework/Versions/A/MPSNeuralNetwork
+    0x7fff43561000 -     0x7fff43561ff7  com.apple.MetalPerformanceShaders.MetalPerformanceShaders (1.0 - 1) <20ECB52B-B5C2-39EA-88E3-DFEC0C3CC9FF> /System/Library/Frameworks/MetalPerformanceShaders.framework/Versions/A/MetalPerformanceShaders
+    0x7fff44560000 -     0x7fff4456cffb  com.apple.NetFS (6.0 - 4.0) <471DD96F-FA2E-3FE9-9746-2519A6780D1A> /System/Library/Frameworks/NetFS.framework/Versions/A/NetFS
+    0x7fff4735e000 -     0x7fff473acfff  com.apple.opencl (2.8.15 - 2.8.15) <83ED39D0-1D39-3593-BA25-70A8A911DE71> /System/Library/Frameworks/OpenCL.framework/Versions/A/OpenCL
+    0x7fff473ad000 -     0x7fff473c9ffb  com.apple.CFOpenDirectory (10.13 - 207.50.1) <C2715A7A-2E5C-3A21-ADB4-726F707A1294> /System/Library/Frameworks/OpenDirectory.framework/Versions/A/Frameworks/CFOpenDirectory.framework/Versions/A/CFOpenDirectory
+    0x7fff473ca000 -     0x7fff473d5fff  com.apple.OpenDirectory (10.13 - 207.50.1) <220FB6F2-4892-3A66-8838-C134CF657D3A> /System/Library/Frameworks/OpenDirectory.framework/Versions/A/OpenDirectory
+    0x7fff48554000 -     0x7fff48556fff  libCVMSPluginSupport.dylib (16.5.10) <BF5D065A-A38B-3446-9418-799F598072EF> /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libCVMSPluginSupport.dylib
+    0x7fff48557000 -     0x7fff4855cffb  libCoreFSCache.dylib (162.6.1) <879B2738-2E8A-3596-AFF8-9C3FB1B6828B> /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libCoreFSCache.dylib
+    0x7fff4855d000 -     0x7fff48561fff  libCoreVMClient.dylib (162.6.1) <64ED0A84-225F-39BC-BE0D-C896ACF5B50A> /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libCoreVMClient.dylib
+    0x7fff48562000 -     0x7fff4856bff7  libGFXShared.dylib (16.5.10) <6024B1FE-ACD7-3314-B390-85972CB9B778> /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGFXShared.dylib
+    0x7fff4856c000 -     0x7fff48577fff  libGL.dylib (16.5.10) <AB8B6C73-8496-3784-83F6-27737ED03B09> /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib
+    0x7fff48578000 -     0x7fff485b3fe7  libGLImage.dylib (16.5.10) <5B41D074-3132-3587-91B6-E441BA8C9F13> /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLImage.dylib
+    0x7fff48721000 -     0x7fff4875fffb  libGLU.dylib (16.5.10) <F6844912-1B86-34DF-9FB5-A428CC7B5B18> /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLU.dylib
+    0x7fff490d7000 -     0x7fff490e6fff  com.apple.opengl (16.5.10 - 16.5.10) <BC4EEFE3-A09B-3998-B723-1415B995B0EE> /System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL
+    0x7fff49f35000 -     0x7fff4a180ff7  com.apple.QuartzCore (1.11 - 584.40) <ABC7F8FA-5F5A-31F4-868B-FDC4175BAFAC> /System/Library/Frameworks/QuartzCore.framework/Versions/A/QuartzCore
+    0x7fff4a9b4000 -     0x7fff4acdcfff  com.apple.security (7.0 - 58286.51.6) <7212D257-5324-3DBA-8C26-504D6B8F632A> /System/Library/Frameworks/Security.framework/Versions/A/Security
+    0x7fff4acdd000 -     0x7fff4ad69ff7  com.apple.securityfoundation (6.0 - 55185.50.5) <087D601E-7813-3F9E-97EE-BC7081F520BD> /System/Library/Frameworks/SecurityFoundation.framework/Versions/A/SecurityFoundation
+    0x7fff4ad9b000 -     0x7fff4ad9fffb  com.apple.xpc.ServiceManagement (1.0 - 1) <5BFDB3ED-73A7-3035-A5BC-ADA6E4F74BFD> /System/Library/Frameworks/ServiceManagement.framework/Versions/A/ServiceManagement
+    0x7fff4b144000 -     0x7fff4b1b4ff3  com.apple.SystemConfiguration (1.17 - 1.17) <8532B8E9-7E30-35A3-BC4A-DDE8E0614FDA> /System/Library/Frameworks/SystemConfiguration.framework/Versions/A/SystemConfiguration
+    0x7fff4b369000 -     0x7fff4b6e4fff  com.apple.VideoToolbox (1.0 - 2275.61.1) <B8E60F20-DEB7-38CA-B294-FD1DB3F233EC> /System/Library/Frameworks/VideoToolbox.framework/Versions/A/VideoToolbox
+    0x7fff4e0a5000 -     0x7fff4e138ff7  com.apple.APFS (1.0 - 1) <D1CE52E0-45C0-30C4-B440-E2CF2F74CEE5> /System/Library/PrivateFrameworks/APFS.framework/Versions/A/APFS
+    0x7fff4ed53000 -     0x7fff4ed7bfff  com.apple.framework.Apple80211 (13.0 - 1361.7) <16627876-8CF5-3502-A1D6-35FCBDD5E79A> /System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Apple80211
+    0x7fff4ed7d000 -     0x7fff4ed8cfef  com.apple.AppleFSCompression (96.30.2 - 1.0) <ABFF224B-22D6-35F6-A072-9548FD388EB7> /System/Library/PrivateFrameworks/AppleFSCompression.framework/Versions/A/AppleFSCompression
+    0x7fff4ed8d000 -     0x7fff4ee75fff  com.apple.AppleGVAFramework (11.5.24 - 11.5.24) <D2412FDD-A8D8-3DDD-AB16-EF7338289B46> /System/Library/PrivateFrameworks/AppleGVA.framework/Versions/A/AppleGVA
+    0x7fff4eece000 -     0x7fff4ef16ff3  com.apple.AppleJPEG (1.0 - 1) <8DD410CB-76A1-3F22-9A9F-0491FA0CEB4A> /System/Library/PrivateFrameworks/AppleJPEG.framework/Versions/A/AppleJPEG
+    0x7fff4ef51000 -     0x7fff4ef79fff  com.apple.applesauce (1.0 - ???) <CCA8B094-1BCE-3AE3-A0A7-D544C818DE36> /System/Library/PrivateFrameworks/AppleSauce.framework/Versions/A/AppleSauce
+    0x7fff4f046000 -     0x7fff4f096ff7  com.apple.AppleVAFramework (5.0.41 - 5.0.41) <8169ABC4-56F0-301E-B913-A762F7E40DBF> /System/Library/PrivateFrameworks/AppleVA.framework/Versions/A/AppleVA
+    0x7fff4f799000 -     0x7fff4f7a0ff7  com.apple.coreservices.BackgroundTaskManagement (1.0 - 57.1) <51A41CA3-DB1D-3380-993E-99C54AEE518E> /System/Library/PrivateFrameworks/BackgroundTaskManagement.framework/Versions/A/BackgroundTaskManagement
+    0x7fff4f7a1000 -     0x7fff4f828ff7  com.apple.backup.framework (1.9.5 - 1.9.5) <BC020BDD-7C93-37E5-A762-4FDCBD2056A8> /System/Library/PrivateFrameworks/Backup.framework/Versions/A/Backup
+    0x7fff511de000 -     0x7fff511e7ff3  com.apple.CommonAuth (4.0 - 2.0) <4D237B25-27E5-3577-948B-073659F6D3C0> /System/Library/PrivateFrameworks/CommonAuth.framework/Versions/A/CommonAuth
+    0x7fff51523000 -     0x7fff5192bfff  com.apple.CoreAUC (259.0.0 - 259.0.0) <1E0FB2C7-109E-3924-8E7F-8C6ACD78AF26> /System/Library/PrivateFrameworks/CoreAUC.framework/Versions/A/CoreAUC
+    0x7fff5192c000 -     0x7fff5195cff7  com.apple.CoreAVCHD (5.9.0 - 5900.4.1) <E9FF9574-122A-3966-AA2B-546E512ACD06> /System/Library/PrivateFrameworks/CoreAVCHD.framework/Versions/A/CoreAVCHD
+    0x7fff51cea000 -     0x7fff51cfaff7  com.apple.CoreEmoji (1.0 - 69.3) <A4357F5C-0C38-3A61-B456-D7321EB2CEE5> /System/Library/PrivateFrameworks/CoreEmoji.framework/Versions/A/CoreEmoji
+    0x7fff52bd8000 -     0x7fff52c09ff3  com.apple.CoreServicesInternal (309.1 - 309.1) <EB09CAFC-AE9B-3257-BE45-5471D9F64AAD> /System/Library/PrivateFrameworks/CoreServicesInternal.framework/Versions/A/CoreServicesInternal
+    0x7fff52f45000 -     0x7fff52fd6fff  com.apple.CoreSymbolication (9.3 - 64026) <BAF3CE6E-8140-3159-BF1B-B953816459A0> /System/Library/PrivateFrameworks/CoreSymbolication.framework/Versions/A/CoreSymbolication
+    0x7fff53059000 -     0x7fff5318dfff  com.apple.coreui (2.1 - 494.1) <19624CAA-74DE-3DD3-9585-E64BE866EBFF> /System/Library/PrivateFrameworks/CoreUI.framework/Versions/A/CoreUI
+    0x7fff5318e000 -     0x7fff532beff7  com.apple.CoreUtils (5.5 - 550.44) <DFC364C3-0812-31B5-9C79-C81C2DFDDB8B> /System/Library/PrivateFrameworks/CoreUtils.framework/Versions/A/CoreUtils
+    0x7fff53313000 -     0x7fff53377fff  com.apple.framework.CoreWiFi (13.0 - 1350.1) <6EC5DEB3-6E2F-3DC2-BE59-1FD05175FB0C> /System/Library/PrivateFrameworks/CoreWiFi.framework/Versions/A/CoreWiFi
+    0x7fff53378000 -     0x7fff53388ff7  com.apple.CrashReporterSupport (10.13 - 1) <42451386-F745-38B9-896F-49996B26D066> /System/Library/PrivateFrameworks/CrashReporterSupport.framework/Versions/A/CrashReporterSupport
+    0x7fff53406000 -     0x7fff53415ff7  com.apple.framework.DFRFoundation (1.0 - 191.7) <3B8ED6F7-5DFF-34C3-BA90-DDB85679684C> /System/Library/PrivateFrameworks/DFRFoundation.framework/Versions/A/DFRFoundation
+    0x7fff53418000 -     0x7fff5341cffb  com.apple.DSExternalDisplay (3.1 - 380) <8D03D346-887A-3CE7-9483-4AD7804D1FBB> /System/Library/PrivateFrameworks/DSExternalDisplay.framework/Versions/A/DSExternalDisplay
+    0x7fff5349e000 -     0x7fff53514fff  com.apple.datadetectorscore (7.0 - 590.3) <83E85A62-44A8-33F8-AD79-AC4C807184C4> /System/Library/PrivateFrameworks/DataDetectorsCore.framework/Versions/A/DataDetectorsCore
+    0x7fff53562000 -     0x7fff535a2ff7  com.apple.DebugSymbols (181.0 - 181.0) <299A0238-ED78-3676-B131-274D972824AA> /System/Library/PrivateFrameworks/DebugSymbols.framework/Versions/A/DebugSymbols
+    0x7fff535a3000 -     0x7fff536d2fff  com.apple.desktopservices (1.12.4 - 1.12.4) <47C3FBF3-5E75-3821-B003-2A4DC3657D8D> /System/Library/PrivateFrameworks/DesktopServicesPriv.framework/Versions/A/DesktopServicesPriv
+    0x7fff544e9000 -     0x7fff54917fff  com.apple.vision.FaceCore (3.3.2 - 3.3.2) <B574FE33-4A41-3611-9738-388EBAF03E37> /System/Library/PrivateFrameworks/FaceCore.framework/Versions/A/FaceCore
+    0x7fff56573000 -     0x7fff56573fff  libmetal_timestamp.dylib (802.4.5) <BCA42032-C91F-3463-BA1E-1433262ACA0A> /System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/3802/Libraries/libmetal_timestamp.dylib
+    0x7fff57bdf000 -     0x7fff57be4ff7  com.apple.GPUWrangler (3.18.48 - 3.18.48) <D2BA4CFA-ED0A-3FEC-B5FF-2D6C0557334E> /System/Library/PrivateFrameworks/GPUWrangler.framework/Versions/A/GPUWrangler
+    0x7fff5895a000 -     0x7fff58969fff  com.apple.GraphVisualizer (1.0 - 5) <B993B8A2-5700-3DFC-9EB7-4CCEE8F959F1> /System/Library/PrivateFrameworks/GraphVisualizer.framework/Versions/A/GraphVisualizer
+    0x7fff589ec000 -     0x7fff58a60fff  com.apple.Heimdal (4.0 - 2.0) <18607D75-DB78-3CC7-947E-AC769195164C> /System/Library/PrivateFrameworks/Heimdal.framework/Versions/A/Heimdal
+    0x7fff58a61000 -     0x7fff58a8ffff  com.apple.HelpData (2.3 - 167) <4D9B89EB-2FE8-3ABD-8C22-54E6FE208E71> /System/Library/PrivateFrameworks/HelpData.framework/Versions/A/HelpData
+    0x7fff5935c000 -     0x7fff59363ff7  com.apple.IOAccelerator (378.18.1 - 378.18.1) <E47DDE66-1B2B-310F-A060-638CA5D86F9C> /System/Library/PrivateFrameworks/IOAccelerator.framework/Versions/A/IOAccelerator
+    0x7fff59367000 -     0x7fff5937ffff  com.apple.IOPresentment (1.0 - 35.1) <214AD582-466F-3844-A0A4-DE0742A8B899> /System/Library/PrivateFrameworks/IOPresentment.framework/Versions/A/IOPresentment
+    0x7fff5974a000 -     0x7fff59770ffb  com.apple.IconServices (97.6 - 97.6) <A56D826D-20D2-34BE-AACC-A80CFCB4E915> /System/Library/PrivateFrameworks/IconServices.framework/Versions/A/IconServices
+    0x7fff5987c000 -     0x7fff5987fff3  com.apple.InternationalSupport (1.0 - 1) <5AB382FD-BF81-36A1-9565-61F1FD398ECA> /System/Library/PrivateFrameworks/InternationalSupport.framework/Versions/A/InternationalSupport
+    0x7fff598ed000 -     0x7fff598fdffb  com.apple.IntlPreferences (2.0 - 227.5.2) <436BBE9B-595B-37EB-8B54-B332B6AE3E57> /System/Library/PrivateFrameworks/IntlPreferences.framework/Versions/A/IntlPreferences
+    0x7fff59a08000 -     0x7fff59afdff7  com.apple.LanguageModeling (1.0 - 159.5.3) <7F0AC200-E3DD-39FB-8A95-00DD70B66A9F> /System/Library/PrivateFrameworks/LanguageModeling.framework/Versions/A/LanguageModeling
+    0x7fff59afe000 -     0x7fff59b40fff  com.apple.Lexicon-framework (1.0 - 33.5) <DC94CF9E-1EB4-3C0E-B298-CA1190885276> /System/Library/PrivateFrameworks/Lexicon.framework/Versions/A/Lexicon
+    0x7fff59b44000 -     0x7fff59b4bff7  com.apple.LinguisticData (1.0 - 238.3) <49A54649-1021-3DBD-99B8-1B2EDFFA5378> /System/Library/PrivateFrameworks/LinguisticData.framework/Versions/A/LinguisticData
+    0x7fff5a34a000 -     0x7fff5a34dfff  com.apple.Mangrove (1.0 - 1) <27D6DF76-B5F8-3443-8826-D25B284331BF> /System/Library/PrivateFrameworks/Mangrove.framework/Versions/A/Mangrove
+    0x7fff5a82a000 -     0x7fff5a893ff7  com.apple.gpusw.MetalTools (1.0 - 1) <B5F66CF4-BE75-3A0B-A6A0-2F22C7C259D9> /System/Library/PrivateFrameworks/MetalTools.framework/Versions/A/MetalTools
+    0x7fff5a89c000 -     0x7fff5a8b3ff7  com.apple.MobileAssets (1.0 - 437.50.37) <675063CD-8335-32C2-AAAF-46CA5C265800> /System/Library/PrivateFrameworks/MobileAsset.framework/Versions/A/MobileAsset
+    0x7fff5aab4000 -     0x7fff5aadeffb  com.apple.MultitouchSupport.framework (1404.4 - 1404.4) <45374A2A-C0BC-3A70-8183-37295205CDFA> /System/Library/PrivateFrameworks/MultitouchSupport.framework/Versions/A/MultitouchSupport
+    0x7fff5ad45000 -     0x7fff5ad50fff  com.apple.NetAuth (6.2 - 6.2) <B3795F63-C14A-33E1-9EE6-02A2E7661321> /System/Library/PrivateFrameworks/NetAuth.framework/Versions/A/NetAuth
+    0x7fff5c5e2000 -     0x7fff5c5f2ffb  com.apple.PerformanceAnalysis (1.194 - 194) <D0211AD1-72B3-3493-92C9-B4F40ED581D5> /System/Library/PrivateFrameworks/PerformanceAnalysis.framework/Versions/A/PerformanceAnalysis
+    0x7fff5e3b0000 -     0x7fff5e3cefff  com.apple.ProtocolBuffer (1 - 260) <40704740-4A53-3010-A49B-08D1D69D1D5E> /System/Library/PrivateFrameworks/ProtocolBuffer.framework/Versions/A/ProtocolBuffer
+    0x7fff5e597000 -     0x7fff5e5a3fff  com.apple.xpc.RemoteServiceDiscovery (1.0 - 1205.50.76) <C735038A-BC7E-3DE3-B350-6449404FC259> /System/Library/PrivateFrameworks/RemoteServiceDiscovery.framework/Versions/A/RemoteServiceDiscovery
+    0x7fff5e5a4000 -     0x7fff5e5c7ffb  com.apple.RemoteViewServices (2.0 - 125) <592323D1-CB44-35F1-9921-4C2AB8D920A0> /System/Library/PrivateFrameworks/RemoteViewServices.framework/Versions/A/RemoteViewServices
+    0x7fff5e5c8000 -     0x7fff5e5dcff7  com.apple.xpc.RemoteXPC (1.0 - 1205.50.76) <6E67A656-542A-34BD-B598-56B8D5A70814> /System/Library/PrivateFrameworks/RemoteXPC.framework/Versions/A/RemoteXPC
+    0x7fff5fee4000 -     0x7fff5fff6fff  com.apple.Sharing (1019.46 - 1019.46) <1266C41E-3CA9-3EFC-8413-A37D52EA9FB2> /System/Library/PrivateFrameworks/Sharing.framework/Versions/A/Sharing
+    0x7fff5fff7000 -     0x7fff60016ff7  com.apple.shortcut (2.16 - 99) <201F92AE-F8E6-3A24-B9DE-26B88CD2EF18> /System/Library/PrivateFrameworks/Shortcut.framework/Versions/A/Shortcut
+    0x7fff60021000 -     0x7fff60022ff7  com.apple.performance.SignpostNotification (1.2.4 - 2.4) <9957B2C0-4D48-3337-8A4D-5E457CC7B542> /System/Library/PrivateFrameworks/SignpostNotification.framework/Versions/A/SignpostNotification
+    0x7fff60d6a000 -     0x7fff61006fff  com.apple.SkyLight (1.600.0 - 312.50) <0CF4C608-8748-32BF-9586-A1601945F82C> /System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/SkyLight
+    0x7fff617cc000 -     0x7fff617d9ff7  com.apple.SpeechRecognitionCore (4.0.13 - 4.0.13) <8B5418A4-CDC5-3200-AEF0-F109E0DF9019> /System/Library/PrivateFrameworks/SpeechRecognitionCore.framework/Versions/A/SpeechRecognitionCore
+    0x7fff61c84000 -     0x7fff61cabfff  com.apple.StreamingZip (1.0 - 1) <3DE92A6D-565E-3477-82B1-660987317BD8> /System/Library/PrivateFrameworks/StreamingZip.framework/Versions/A/StreamingZip
+    0x7fff6237d000 -     0x7fff62406fc7  com.apple.Symbolication (9.3 - 64033) <FAA17252-6378-34A4-BBBB-22DF54EC1626> /System/Library/PrivateFrameworks/Symbolication.framework/Versions/A/Symbolication
+    0x7fff62976000 -     0x7fff6297eff7  com.apple.TCC (1.0 - 1) <E1EB7272-FE6F-39AB-83CA-B2B5F2A88D9B> /System/Library/PrivateFrameworks/TCC.framework/Versions/A/TCC
+    0x7fff62b8b000 -     0x7fff62c48ff7  com.apple.TextureIO (3.7 - 3.7) <F8BAC954-405D-3CC3-AB7B-048C866EF980> /System/Library/PrivateFrameworks/TextureIO.framework/Versions/A/TextureIO
+    0x7fff62cf5000 -     0x7fff62ea4fff  com.apple.UIFoundation (1.0 - 547.3) <ACC12DF5-E528-33F3-A358-4E1BEA68239C> /System/Library/PrivateFrameworks/UIFoundation.framework/Versions/A/UIFoundation
+    0x7fff63b79000 -     0x7fff63c48ff7  com.apple.ViewBridge (343.2 - 343.2) <5519FCED-1F88-3BE6-9BE1-69992086B01B> /System/Library/PrivateFrameworks/ViewBridge.framework/Versions/A/ViewBridge
+    0x7fff645ad000 -     0x7fff645afffb  com.apple.loginsupport (1.0 - 1) <D1232C1B-80EA-3DF8-9466-013695D0846E> /System/Library/PrivateFrameworks/login.framework/Versions/A/Frameworks/loginsupport.framework/Versions/A/loginsupport
+    0x7fff645b0000 -     0x7fff645c5fff  com.apple.login (3.0 - 3.0) <79189BF9-70D4-3839-9E2F-B3990B673A3E> /System/Library/PrivateFrameworks/login.framework/Versions/A/login
+    0x7fff64716000 -     0x7fff64749ff7  libclosured.dylib (551.3) <DC3DA678-9C40-339C-A9C6-32AB74FCC682> /usr/lib/closure/libclosured.dylib
+    0x7fff64803000 -     0x7fff6483cff7  libCRFSuite.dylib (41) <FE5EDB68-2593-3C2E-BBAF-1C52D206F296> /usr/lib/libCRFSuite.dylib
+    0x7fff6483d000 -     0x7fff64848fff  libChineseTokenizer.dylib (28) <53633C9B-A3A8-36F7-A53C-432D802F4BB8> /usr/lib/libChineseTokenizer.dylib
+    0x7fff648da000 -     0x7fff648dbff3  libDiagnosticMessagesClient.dylib (104) <9712E980-76EE-3A89-AEA6-DF4BAF5C0574> /usr/lib/libDiagnosticMessagesClient.dylib
+    0x7fff64912000 -     0x7fff64adcff3  libFosl_dynamic.dylib (17.8) <C58ED77A-4986-31C2-994C-34DDFB8106F0> /usr/lib/libFosl_dynamic.dylib
+    0x7fff64b14000 -     0x7fff64b14fff  libOpenScriptingUtil.dylib (174) <610F0242-7CE5-3C86-951B-B646562694AF> /usr/lib/libOpenScriptingUtil.dylib
+    0x7fff64c4b000 -     0x7fff64c4fffb  libScreenReader.dylib (562.18.4) <E239923D-54C9-3BBF-852F-87C09DEF4091> /usr/lib/libScreenReader.dylib
+    0x7fff64c50000 -     0x7fff64c51ffb  libSystem.B.dylib (1252.50.4) <F64430FD-30A6-328D-A476-0AED41D371C6> /usr/lib/libSystem.B.dylib
+    0x7fff64ce4000 -     0x7fff64ce4fff  libapple_crypto.dylib (109.50.14) <48BA2E76-BF2F-3522-A54E-D7FB7EAF7A57> /usr/lib/libapple_crypto.dylib
+    0x7fff64ce5000 -     0x7fff64cfbff7  libapple_nghttp2.dylib (1.24) <01402BC4-4822-3676-9C80-50D83F816424> /usr/lib/libapple_nghttp2.dylib
+    0x7fff64cfc000 -     0x7fff64d26ff3  libarchive.2.dylib (54) <8FC28DD8-E315-3C3E-95FE-D1D2CBE49888> /usr/lib/libarchive.2.dylib
+    0x7fff64d27000 -     0x7fff64da8fdf  libate.dylib (1.13.1) <178ACDAD-DE7E-346C-A613-1CBF7929AC07> /usr/lib/libate.dylib
+    0x7fff64dac000 -     0x7fff64dacff3  libauto.dylib (187) <A05C7900-F8C7-3E75-8D3F-909B40C19717> /usr/lib/libauto.dylib
+    0x7fff64dad000 -     0x7fff64e65ff3  libboringssl.dylib (109.50.14) <E6813F87-B5E4-3F7F-A725-E6A7F2BD02EC> /usr/lib/libboringssl.dylib
+    0x7fff64e66000 -     0x7fff64e76ff3  libbsm.0.dylib (39) <6BC96A72-AFBE-34FD-91B1-748A530D8AE6> /usr/lib/libbsm.0.dylib
+    0x7fff64e77000 -     0x7fff64e84ffb  libbz2.1.0.dylib (38) <0A5086BB-4724-3C14-979D-5AD4F26B5B45> /usr/lib/libbz2.1.0.dylib
+    0x7fff64e85000 -     0x7fff64edbfff  libc++.1.dylib (400.9) <7D3DACCC-3804-393C-ABC1-1A580FD00CB6> /usr/lib/libc++.1.dylib
+    0x7fff64edc000 -     0x7fff64f00ff7  libc++abi.dylib (400.8.2) <EF5E37D7-11D9-3530-BE45-B986612D13E2> /usr/lib/libc++abi.dylib
+    0x7fff64f02000 -     0x7fff64f12fff  libcmph.dylib (6) <A5509EE8-7E00-3224-8814-015B077A3CF5> /usr/lib/libcmph.dylib
+    0x7fff64f13000 -     0x7fff64f29fff  libcompression.dylib (47.50.1) <491784AE-CB90-3E27-9081-95C3A1211760> /usr/lib/libcompression.dylib
+    0x7fff651d4000 -     0x7fff651ecff7  libcoretls.dylib (155.50.1) <D350052E-DC4D-3185-ADBA-BA48EDCEE955> /usr/lib/libcoretls.dylib
+    0x7fff651ed000 -     0x7fff651eeff3  libcoretls_cfhelpers.dylib (155.50.1) <B297F5D8-F2FE-3566-A752-E9D998B9C039> /usr/lib/libcoretls_cfhelpers.dylib
+    0x7fff656bf000 -     0x7fff65715ff3  libcups.2.dylib (462.2) <64864CBE-03A3-34C7-9DBB-C93601F183FD> /usr/lib/libcups.2.dylib
+    0x7fff65855000 -     0x7fff65855fff  libenergytrace.dylib (16) <A92AB8B8-B986-3CE6-980D-D55090FEF387> /usr/lib/libenergytrace.dylib
+    0x7fff6588c000 -     0x7fff65891ff3  libheimdal-asn1.dylib (520.50.6) <E358445A-B84E-31B5-BCCD-7E1397519D96> /usr/lib/libheimdal-asn1.dylib
+    0x7fff658bd000 -     0x7fff659aeff7  libiconv.2.dylib (51.50.1) <2FEC9707-3FAF-3828-A50D-8605086D060F> /usr/lib/libiconv.2.dylib
+    0x7fff659af000 -     0x7fff65bd6ffb  libicucore.A.dylib (59173.0.1) <CECAD5E5-3EFD-3AAC-AD9B-E355B2DD5E9C> /usr/lib/libicucore.A.dylib
+    0x7fff65c23000 -     0x7fff65c24fff  liblangid.dylib (128) <39C39393-0D05-301D-93B2-F224FC4949AA> /usr/lib/liblangid.dylib
+    0x7fff65c25000 -     0x7fff65c3effb  liblzma.5.dylib (10) <3D419A50-961F-37D2-8A01-3DC7AB7B8D18> /usr/lib/liblzma.5.dylib
+    0x7fff65c3f000 -     0x7fff65c55ff7  libmarisa.dylib (9) <D6D2D55D-1D2E-3442-B152-B18803C0ABB4> /usr/lib/libmarisa.dylib
+    0x7fff65d06000 -     0x7fff65f2eff7  libmecabra.dylib (779.7.6) <F462F170-E872-3D09-B219-973D5E99C09F> /usr/lib/libmecabra.dylib
+    0x7fff66106000 -     0x7fff66280fff  libnetwork.dylib (1229.51.2) <D64FE2A1-CBFD-3817-A701-9A0DDBD70DCF> /usr/lib/libnetwork.dylib
+    0x7fff662ff000 -     0x7fff666ed7e7  libobjc.A.dylib (723) <DD9E5EC5-B507-3249-B700-93433E2D5EDF> /usr/lib/libobjc.A.dylib
+    0x7fff66700000 -     0x7fff66704fff  libpam.2.dylib (22) <7B4D2CE2-1438-387A-9802-5CEEFBF26F86> /usr/lib/libpam.2.dylib
+    0x7fff66707000 -     0x7fff6673bfff  libpcap.A.dylib (79.20.1) <FA13918B-A247-3181-B256-9B852C7BA316> /usr/lib/libpcap.A.dylib
+    0x7fff667ba000 -     0x7fff667d6ffb  libresolv.9.dylib (65) <E8F3415B-4472-3202-8901-41FD87981DB2> /usr/lib/libresolv.9.dylib
+    0x7fff66825000 -     0x7fff66826ff3  libspindump.dylib (252) <D8E27057-E3CC-3D7F-A010-4A87830F6A83> /usr/lib/libspindump.dylib
+    0x7fff66827000 -     0x7fff669baff7  libsqlite3.dylib (274.8.1) <FCAD6A57-829E-3701-B16E-1833D620E0E8> /usr/lib/libsqlite3.dylib
+    0x7fff66abc000 -     0x7fff66b0afff  libstdc++.6.0.9.dylib (104.1) <0EA35E7E-B536-3628-B462-A4098805CEAC> /usr/lib/libstdc++.6.0.9.dylib
+    0x7fff66b12000 -     0x7fff66b23fff  libsystemstats.dylib (403.50.9) <5BDD58E2-3ECD-3AEA-A69C-388056831858> /usr/lib/libsystemstats.dylib
+    0x7fff66b8e000 -     0x7fff66beeff3  libusrtcp.dylib (1229.51.2) <3D8806D9-4BA9-35EE-BC44-F58BC2A0962D> /usr/lib/libusrtcp.dylib
+    0x7fff66bef000 -     0x7fff66bf2ffb  libutil.dylib (51.20.1) <216D18E5-0BAF-3EAF-A38E-F6AC37CBABD9> /usr/lib/libutil.dylib
+    0x7fff66bf3000 -     0x7fff66c00fff  libxar.1.dylib (400) <0316128D-3B47-3052-995D-97B4FE5491DC> /usr/lib/libxar.1.dylib
+    0x7fff66c04000 -     0x7fff66cebfff  libxml2.2.dylib (31.10) <503721DB-0D8D-379E-B743-18CE59304155> /usr/lib/libxml2.2.dylib
+    0x7fff66cec000 -     0x7fff66d14fff  libxslt.1.dylib (15.12) <4A5E011D-8B29-3135-A52B-9A9070ABD752> /usr/lib/libxslt.1.dylib
+    0x7fff66d15000 -     0x7fff66d27ffb  libz.1.dylib (70) <48C67CFC-940D-3857-8DAD-857774605352> /usr/lib/libz.1.dylib
+    0x7fff66dc3000 -     0x7fff66dc7ff7  libcache.dylib (80) <092479CB-1008-3A83-BECF-E115F24D13C1> /usr/lib/system/libcache.dylib
+    0x7fff66dc8000 -     0x7fff66dd2ff3  libcommonCrypto.dylib (60118.50.1) <029F5985-9B6E-3DCB-9B96-FD007678C6A7> /usr/lib/system/libcommonCrypto.dylib
+    0x7fff66dd3000 -     0x7fff66ddafff  libcompiler_rt.dylib (62) <968B8E3F-3681-3230-9D78-BB8732024F6E> /usr/lib/system/libcompiler_rt.dylib
+    0x7fff66ddb000 -     0x7fff66de4ffb  libcopyfile.dylib (146.50.5) <3885083D-50D8-3EEC-B481-B2E605180D7F> /usr/lib/system/libcopyfile.dylib
+    0x7fff66de5000 -     0x7fff66e6afff  libcorecrypto.dylib (562.50.17) <67007279-24E1-3F30-802D-A55CD5C27946> /usr/lib/system/libcorecrypto.dylib
+    0x7fff66ef2000 -     0x7fff66f2bff7  libdispatch.dylib (913.50.12) <848EEE57-4235-3A61-9A52-C0097DD2AB5E> /usr/lib/system/libdispatch.dylib
+    0x7fff66f2c000 -     0x7fff66f49ff7  libdyld.dylib (551.3) <CF59A5A5-288B-30E6-BD42-9056B4E4139A> /usr/lib/system/libdyld.dylib
+    0x7fff66f4a000 -     0x7fff66f4affb  libkeymgr.dylib (28) <E34E283E-90FA-3C59-B48E-1277CDB9CDCE> /usr/lib/system/libkeymgr.dylib
+    0x7fff66f4b000 -     0x7fff66f57ff3  libkxld.dylib (4570.51.2) <A209B8A2-F5C3-35B1-A70B-1938F25B0ABE> /usr/lib/system/libkxld.dylib
+    0x7fff66f58000 -     0x7fff66f58ff7  liblaunch.dylib (1205.50.76) <4D52BB64-C568-3A36-8935-2480427EE2A2> /usr/lib/system/liblaunch.dylib
+    0x7fff66f59000 -     0x7fff66f5dffb  libmacho.dylib (906) <1902A611-081A-3452-B11E-EBD1B166E831> /usr/lib/system/libmacho.dylib
+    0x7fff66f5e000 -     0x7fff66f60ff3  libquarantine.dylib (86) <26C0BA22-8F93-3A07-9A4E-C8D53D2CE42E> /usr/lib/system/libquarantine.dylib
+    0x7fff66f61000 -     0x7fff66f62ff3  libremovefile.dylib (45) <711E18B2-5BBE-3211-A916-56740C27D17A> /usr/lib/system/libremovefile.dylib
+    0x7fff66f63000 -     0x7fff66f7afff  libsystem_asl.dylib (356.50.1) <3B24F2D1-B578-359D-ADB2-0ED19A364C38> /usr/lib/system/libsystem_asl.dylib
+    0x7fff66f7b000 -     0x7fff66f7bfff  libsystem_blocks.dylib (67) <17303FDF-0D2D-3963-B05E-B4DF63052D47> /usr/lib/system/libsystem_blocks.dylib
+    0x7fff66f7c000 -     0x7fff67005ff7  libsystem_c.dylib (1244.50.9) <1187BFE8-4576-3247-8177-481554E1F9E7> /usr/lib/system/libsystem_c.dylib
+    0x7fff67006000 -     0x7fff67009ffb  libsystem_configuration.dylib (963.50.8) <DF6B5287-203E-30CB-9947-78DF446C72B8> /usr/lib/system/libsystem_configuration.dylib
+    0x7fff6700a000 -     0x7fff6700dffb  libsystem_coreservices.dylib (51) <486000D3-D8CB-3BE7-8EE5-8BF380DE6DF7> /usr/lib/system/libsystem_coreservices.dylib
+    0x7fff6700e000 -     0x7fff6700ffff  libsystem_darwin.dylib (1244.50.9) <09C21A4A-9EE0-388B-A9D9-DFF8F6758791> /usr/lib/system/libsystem_darwin.dylib
+    0x7fff67010000 -     0x7fff67016ff7  libsystem_dnssd.dylib (878.50.17) <9033B909-BCF7-37EB-A040-ADE8081611D6> /usr/lib/system/libsystem_dnssd.dylib
+    0x7fff67017000 -     0x7fff67060ff7  libsystem_info.dylib (517.30.1) <AB634A98-B8AA-3804-8436-38261FC8EC4D> /usr/lib/system/libsystem_info.dylib
+    0x7fff67061000 -     0x7fff67087ff7  libsystem_kernel.dylib (4570.51.2) <7FF1E390-2FAC-33A7-A545-60D9BB6692D4> /usr/lib/system/libsystem_kernel.dylib
+    0x7fff67088000 -     0x7fff670d3fcb  libsystem_m.dylib (3147.50.1) <FC2E58BA-E6D5-3D2A-89CA-67F212294136> /usr/lib/system/libsystem_m.dylib
+    0x7fff670d4000 -     0x7fff670f3fff  libsystem_malloc.dylib (140.50.6) <7FD43735-9DDD-300E-8C4A-F909A74BDF49> /usr/lib/system/libsystem_malloc.dylib
+    0x7fff670f4000 -     0x7fff67224ff3  libsystem_network.dylib (1229.51.2) <F65ED095-8ABA-3355-93F8-B9D0505932F4> /usr/lib/system/libsystem_network.dylib
+    0x7fff67225000 -     0x7fff6722fffb  libsystem_networkextension.dylib (767.50.25) <758F1414-796D-3422-83C9-92D2915A06CE> /usr/lib/system/libsystem_networkextension.dylib
+    0x7fff67230000 -     0x7fff67239ff3  libsystem_notify.dylib (172) <08012EC0-2CD2-34BE-BF93-E7F56491299A> /usr/lib/system/libsystem_notify.dylib
+    0x7fff6723a000 -     0x7fff67241ff7  libsystem_platform.dylib (161.50.1) <6355EE2D-5456-3CA8-A227-B96E8F1E2AF8> /usr/lib/system/libsystem_platform.dylib
+    0x7fff67242000 -     0x7fff6724dfff  libsystem_pthread.dylib (301.50.1) <0E51CCBA-91F2-34E1-BF2A-FEEFD3D321E4> /usr/lib/system/libsystem_pthread.dylib
+    0x7fff6724e000 -     0x7fff67251fff  libsystem_sandbox.dylib (765.50.51) <B48D256E-D7DB-3D4F-BC95-34557170C7AA> /usr/lib/system/libsystem_sandbox.dylib
+    0x7fff67252000 -     0x7fff67253ff3  libsystem_secinit.dylib (30) <DE8D14E8-A276-3FF8-AE13-77F7040F33C1> /usr/lib/system/libsystem_secinit.dylib
+    0x7fff67254000 -     0x7fff6725bff7  libsystem_symptoms.dylib (820.50.37) <ED7350E0-B68B-374A-9AB7-DC1F195A8327> /usr/lib/system/libsystem_symptoms.dylib
+    0x7fff6725c000 -     0x7fff6726ffff  libsystem_trace.dylib (829.50.17) <6568D68B-1D4C-38EE-90A9-54821D6403C0> /usr/lib/system/libsystem_trace.dylib
+    0x7fff67271000 -     0x7fff67276ff7  libunwind.dylib (35.3) <BEF3FB49-5604-3B5F-82B5-332B80023AC3> /usr/lib/system/libunwind.dylib
+    0x7fff67277000 -     0x7fff672a4fff  libxpc.dylib (1205.50.76) <25DB244E-217D-3CE0-A8F2-0C4255783B42> /usr/lib/system/libxpc.dylib
+Sample analysis of process 15841 written to file /dev/stdout
